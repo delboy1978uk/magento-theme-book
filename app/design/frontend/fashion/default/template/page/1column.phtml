@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?= $this->getLang() ?>">
+
+<head>
+    <?= $this->getChildHtml('head') ?>
+</head>
+
+<body<?= $this->getBodyClass() ? ' class="'.$this->getBodyClass().'"' : null; ?>>
+<?= $this->getChildHtml('after_body_start') ?>
+<?= $this->getChildHtml('global_notices'); ?>
+<header>
+    <?= $this->getChildHtml('header'); ?>
+</header>
+<section id="after-header">
+    <div class="container">
+        <?= $this->getChildHtml('slider'); ?>
+    </div>
+</section>
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+            <?= $this->getChildHtml('breadcrumbs'); ?>
+            <div class="col-md-12">
+                <?= $this->getChildHtml('global_messages'); ?>
+                <?= $this->getChildHtml('content'); ?>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="container">
+        <?= $this->getChildHtml('footer'); ?>
+    </div>
+</footer>
+<?= $this->getChildHtml('before_body_end'); ?>
+<?= $this->getChildHtml('global_cookie_notice'); ?>
+<?= $this->getAbsoluteFooter(); ?>
+</body>
+
+</html>

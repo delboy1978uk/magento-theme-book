@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * local.xml
+ * Local layout modifications for our local theme
+ * @category    design
+ * @package     bookstore
+ * @copyright   Copyright (c) 2015 delboy1978uk.
+ */
+-->
+<layout version="0.1.0">
+    <default>
+
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="head">
+            <!-- Remove base theme stuff -->
+            <action method="removeItem"><type>skin_css</type><name>css/bootstrap.min.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/print.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/styles-ie.css</name></action>
+
+            <!-- CSS -->
+            <action method="addItem"><type>skin_css</type><name>css/bootstrap.min.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/styles.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/component.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/megamenu.css</name></action>
+
+            <!-- JS -->
+            <action method="addJs"><script>lib/jquery/jquery.min.js</script></action>
+            <action method="addJs"><script>lib/jquery/noconflict.js</script></action>
+            <action method="addItem"><type>skin_js</type><name>js/bootstrap.min.js</name></action>
+
+            <!-- IE compat -->
+            <action method="addItem"><type>skin_js</type><name>js/html5shiv.js</name><params/><if>lt IE 9</if></action>
+            <action method="addItem"><type>skin_js</type><name>js/respond.min.js</name><params/><if>lt IE 9</if></action>
+        </reference>
+
+        <print translate="label" module="page">
+            <label>All Pages (Print Version)</label>
+            <!-- Mage_Page -->
+            <block type="page/html" name="root" output="toHtml" template="page/print.phtml">
+
+                <!-- This block allows the print.phtml template to get the logo -->
+                <block type="page/html_header" name="header" as="header"/>
+
+                <block type="page/html_head" name="head" as="head">
+
+                    <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
+                    <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
+                    <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
+                    <action method="addItem"><type>skin_css</type><name>css/print.css</name></action>
+                </block>
+
+                <block type="core/text_list" name="content" as="content" translate="label">
+                    <label>Main Content Area</label>
+                </block>
+
+            </block>
+        </print>
+
+
+
+        <reference name="left">
+            <remove name="left.newsletter"/>
+        </reference>
+
+
+        <reference name="header">
+            <block type="checkout/cart_sidebar" name="top_cart" template="checkout/cart/topcart.phtml" before="-">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block>
+        </reference>
+
+        <reference name="footer">
+            <block type="cms/block" name="footer-company" as="footer-company">
+                <action method="setBlockId"><block_id>footer-company</block_id></action>
+            </block>
+            <block type="cms/block" name="footer-cmslinks" as="footer-cmslinks">
+                <action method="setBlockId"><block_id>footer-cmslinks</block_id></action>
+            </block>
+            <block type="cms/block" name="footer-social" as="footer-social">
+                <action method="setBlockId"><block_id>footer-social</block_id></action>
+            </block>
+            <block type="cms/block" name="footer-cards" as="footer-cards">
+                <action method="setBlockId"><block_id>footer-cards</block_id></action>
+            </block>
+            <block type="newsletter/subscribe" name="footer.newsletter" as="footer-newsletter" template="newsletter/subscribe.phtml"/>
+        </reference>
+
+    </default>
+</layout>

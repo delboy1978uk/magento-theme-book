@@ -1,0 +1,64 @@
+<!-- TopBar -->
+<div id="topbar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <?= $this->getChildHtml('topbar_cmslinks') ?>
+            </div>
+            <div class="user-links col-md-4">
+                 <span class="welcome pull-left">
+                   <?= $this->getLayout()->getBlock('header')->getWelcome() ?>
+                 </span>
+                 <ul class="list-inline pull-left">
+                    <?php if ($this->helper('customer')->isLoggedIn()) { ?>
+                    <li><a title="<?= $this->__('My Account') ?>" href="<?= $this->getUrl('customer/account') ?>"><?= $this->__('My Account') ?></a></li>
+                    <li><a title="Log Out" href="<?= $this->getUrl('customer/account/logout') ?>"><?= $this->__('Logout') ?></a></li>
+                    <?php } else { ?>
+                        <li><a href="<?= $this->getUrl('customer/account/login/')?>"><?= $this->__('Login') ?></a></li>
+                        <li><a href="<?= $this->getUrl('customer/account/create/')?>"><?= $this->__('Create Account') ?></a></li>
+                    <?php } ?>
+                 </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<div id="header">
+    <div class="container">
+        <div class="row">
+            <div  class="logo col-md-4">
+                <a href="<?= $this->getUrl('') ?>" title="<?= $this->getLogoAlt() ?>">
+                    <img src="<?= $this->getLogoSrc() ?>" alt="<?= $this->getLogoAlt() ?>" />
+                </a>
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                <?= $this->getChildHtml('top_cart'); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-main" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header">
+                <a class="navbar-brand visible-xs" href="#">
+                    <?= $this->__('Categories') ?>
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-main-collapse">
+                    <span class="sr-only"><?php echo $this->__('Toggle Navigation') ?></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-main-collapse">
+                <?= $this->getChildHtml('topMenu') ?>
+                <?= $this->getChildHtml('topSearch') ?>
+            </div>
+        </div>
+    </div>
+</nav>

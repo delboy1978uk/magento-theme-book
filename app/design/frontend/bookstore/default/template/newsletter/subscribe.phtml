@@ -1,0 +1,21 @@
+<div class="block block-subscribe">
+    <form action="<?= $this->getFormActionUrl() ?>" method="post"
+          id="newsletter-validate-detail">
+        <div class="input-group">
+           <span class="input-group-addon"><?= $this->__('Newsletter'); ?></span>
+            <input type="text"
+                   class="form-control input-sm required-entry validate-email"
+                   title="<?= $this->__('Sign up for our newsletter') ?>"
+                   id="newsletter"
+                   name="email">
+           <span class="input-group-btn">
+               <button class="btn btn-default btn-sm" title="<?= $this->__('Subscribe') ?>" type="submit"><?= $this->__('Subscribe') ?></button>
+           </span>
+        </div>
+    </form>
+    <script type="text/javascript">
+        //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate - detail');
+        //]]>
+    </script>
+</div>
