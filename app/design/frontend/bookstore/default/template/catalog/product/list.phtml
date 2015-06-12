@@ -1,0 +1,83 @@
+<?php
+
+$collection=$this->getLoadedProductCollection();
+$helper = $this->helper('catalog/output');
+
+if(!$collection->count()) { ?>
+    <p class="note-msg"><?= $this->__('There are no products matching the selection.') ?></p>
+<?php } else { ?>
+    <div class="category-products">
+        <?= $this->getToolbarHtml(); ?>
+        <?php if($this->getMode()!='grid'){ 
+             $iterator = 0; ?>
+            <ul class="products-list row" id="products-list">
+                <?php foreach ($collection as $product) { ?>
+                    <li class="item<?php if( ++$iterator == sizeof($collection) ){ ?> last<?php } ?> col-md-12">
+
+                        <a href="<?= $product->getProductUrl() ?>" title="<?= $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" class="product-image">
+                            <img src="<?= $this->helper('catalog/image')->init($product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?= $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" />
+                        </a>
+
+                        <div class="product-shop">
+                            <div class="f-fix">
+                                <?php $productNameStripped = $this->stripTags($product->getName(), null, true); ?>
+                                <h3 class="product-name"><a href="<?= $product->getProductUrl() ?>" title="<?= $productNameStripped; ?>"><?= $helper->productAttribute($product, $product->getName() , 'name'); ?></a></h3>
+                                <?php if($product->getRatingSummary()): ?>
+                                    <?= $this->getReviewsSummaryHtml($product) ?>
+                                <?php endif; ?>
+                                <?= $this->getPriceHtml($product, true) ?>
+                                <?php if($product->isSaleable()): ?>
+                                    <p><button type="button" title="<?= $this->__('Add to Cart') ?>" class="btn btn-success btn-cart" onclick="setLocation('<?= $this->getAddToCartUrl($product) ?>')"><span><span><?= $this->__('Add to Cart') ?></span></span></button></p>
+                                <?php else: ?>
+                                    <p class="availability out-of-stock"><span><?= $this->__('Out of stock') ?></span></p>
+                                <?php endif; ?>
+                                <div class="desc std">
+                                    <?= $helper->productAttribute($product, $product->getShortDescription(), 'short_description') ?>
+                                    <a href="<?= $product->getProductUrl() ?>" title="<?= $productNameStripped ?>" class="link-learn"><?= $this->__('Learn More') ?></a>
+                                </div>
+                                <ul class="add-to-links">
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <li><a href="<?= $this->helper('wishlist')->getAddUrl($product) ?>" class="link-wishlist"><?= $this->__('Add to Wishlist') ?></a></li>
+                                    <?php endif; ?>
+                                    <?php if($_compareUrl=$this->getAddToCompareUrl($product)){ ?>
+                                        <li><span class="separator">|</span> <a href="<?= $_compareUrl ?>" class="link-compare"><?= $this->__('Add to Compare') ?></a></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                <?php } ?>
+            </ul>
+            <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+        <?php } else {
+    
+            $size = $collection->count();
+            $columns = $this->getColumnCount();
+            $i=0; foreach ($collection as $product) {
+                if ($i++%$columns==0){ ?>
+                    <ul class="products-grid row">
+                <?php } ?>
+                <li class="item<?php if(($i-1)%$columns==0): ?> first<?php elseif($i%$columns==0): ?> last<?php endif; ?> col-md-4"> <a href="<?= $product->getProductUrl() ?>" title="<?= $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" class="product-image"><img src="<?= $this->helper('catalog/image')->init($product, 'small_image')->resize(250,310); ?>" alt="<?= $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" class="img-responsive img-thumbnail" /></a>
+                    <h3 class="panel-title product-name"><a href="<?= $product->getProductUrl() ?>" title="<?= $this->stripTags($product->getName(), null, true) ?>"><?= $helper->productAttribute($product, $product->getName(), 'name') ?></a></h3>
+                    <div class="pull-left"> <?= $this->getPriceHtml($product, true) ?> </div>
+                    <div class="pull-right">
+                        <?php if($product->isSaleable()) { ?>
+                            <button type="button" title="<?= $this->__('Add to Cart') ?>" class="btn btn-warning btn-cart" onclick="setLocation('<?= $this->getAddToCartUrl($product) ?>')"><?= $this->__('Add to Cart') ?></button>
+                        <?php } else { ?>
+                            <p class="btn btn-alert availability out-of-stock"><span><?= $this->__('Out of stock') ?></span></p>
+                        <?php } ?>
+                    </div>
+                </li>
+                <?php if ($i % $columns == 0 || $i == $size) { ?>
+                </ul>
+                <?php } ?>
+            <?php } ?>
+                <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+        <?php } ?>
+
+        <div class="toolbar-bottom">
+            <?= $this->getToolbarHtml(); ?>
+        </div>
+    </div>
+<?php }

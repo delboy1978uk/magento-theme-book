@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.22-1+deb.sury.org~trusty+1)
 # Database: magento
-# Generation Time: 2015-06-10 11:53:48 +0000
+# Generation Time: 2015-06-12 12:36:28 +0000
 # ************************************************************
 
 
@@ -50,7 +50,7 @@ CREATE TABLE `magadmin_role` (
   PRIMARY KEY (`role_id`),
   KEY `IDX_MAGADMIN_ROLE_PARENT_ID_SORT_ORDER` (`parent_id`,`sort_order`),
   KEY `IDX_MAGADMIN_ROLE_TREE_LEVEL` (`tree_level`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Admin Role Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Admin Role Table';
 
 LOCK TABLES `magadmin_role` WRITE;
 /*!40000 ALTER TABLE `magadmin_role` DISABLE KEYS */;
@@ -81,7 +81,7 @@ CREATE TABLE `magadmin_rule` (
   KEY `IDX_MAGADMIN_RULE_RESOURCE_ID_ROLE_ID` (`resource_id`,`role_id`),
   KEY `IDX_MAGADMIN_RULE_ROLE_ID_RESOURCE_ID` (`role_id`,`resource_id`),
   CONSTRAINT `FK_MAGADMIN_RULE_ROLE_ID_MAGADMIN_ROLE_ROLE_ID` FOREIGN KEY (`role_id`) REFERENCES `magadmin_role` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Admin Rule Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Admin Rule Table';
 
 LOCK TABLES `magadmin_rule` WRITE;
 /*!40000 ALTER TABLE `magadmin_rule` DISABLE KEYS */;
@@ -117,14 +117,14 @@ CREATE TABLE `magadmin_user` (
   `rp_token_created_at` timestamp NULL DEFAULT NULL COMMENT 'Reset Password Link Token Creation Date',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `UNQ_MAGADMIN_USER_USERNAME` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Admin User Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Admin User Table';
 
 LOCK TABLES `magadmin_user` WRITE;
 /*!40000 ALTER TABLE `magadmin_user` DISABLE KEYS */;
 
 INSERT INTO `magadmin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`, `rp_token`, `rp_token_created_at`)
 VALUES
-	(1,'Derek','McLean','derek@occa-design.com','delboy1978uk','87114a8ef27d0a6e489eacd7074cd67a:dLZyEdQ65MCFe0OpSizBUkOzdepFY1Zc','2015-05-20 14:03:41','2015-05-21 10:11:43','2015-06-10 11:00:10',31,0,1,'a:1:{s:11:\"configState\";a:18:{s:7:\"web_url\";s:1:\"1\";s:7:\"web_seo\";s:1:\"1\";s:12:\"web_unsecure\";s:1:\"1\";s:10:\"web_secure\";s:1:\"1\";s:11:\"web_default\";s:1:\"0\";s:9:\"web_polls\";s:1:\"0\";s:10:\"web_cookie\";s:1:\"0\";s:11:\"web_session\";s:1:\"0\";s:24:\"web_browser_capabilities\";s:1:\"0\";s:14:\"design_package\";s:1:\"1\";s:12:\"design_theme\";s:1:\"0\";s:11:\"design_head\";s:1:\"0\";s:13:\"design_header\";s:1:\"1\";s:13:\"design_footer\";s:1:\"0\";s:16:\"design_watermark\";s:1:\"0\";s:17:\"design_pagination\";s:1:\"0\";s:12:\"design_email\";s:1:\"0\";s:11:\"cms_wysiwyg\";s:1:\"1\";}}',NULL,NULL);
+	(1,'Derek','McLean','derek@occa-design.com','delboy1978uk','87114a8ef27d0a6e489eacd7074cd67a:dLZyEdQ65MCFe0OpSizBUkOzdepFY1Zc','2015-05-20 14:03:41','2015-05-21 10:11:43','2015-06-12 12:04:05',38,0,1,'a:1:{s:11:\"configState\";a:28:{s:7:\"web_url\";s:1:\"1\";s:7:\"web_seo\";s:1:\"1\";s:12:\"web_unsecure\";s:1:\"1\";s:10:\"web_secure\";s:1:\"1\";s:11:\"web_default\";s:1:\"0\";s:9:\"web_polls\";s:1:\"0\";s:10:\"web_cookie\";s:1:\"0\";s:11:\"web_session\";s:1:\"0\";s:24:\"web_browser_capabilities\";s:1:\"0\";s:14:\"design_package\";s:1:\"1\";s:12:\"design_theme\";s:1:\"0\";s:11:\"design_head\";s:1:\"0\";s:13:\"design_header\";s:1:\"1\";s:13:\"design_footer\";s:1:\"0\";s:16:\"design_watermark\";s:1:\"0\";s:17:\"design_pagination\";s:1:\"0\";s:12:\"design_email\";s:1:\"0\";s:11:\"cms_wysiwyg\";s:1:\"1\";s:12:\"dev_restrict\";s:1:\"1\";s:9:\"dev_debug\";s:1:\"1\";s:12:\"dev_template\";s:1:\"0\";s:20:\"dev_translate_inline\";s:1:\"0\";s:7:\"dev_log\";s:1:\"0\";s:6:\"dev_js\";s:1:\"0\";s:7:\"dev_css\";s:1:\"0\";s:16:\"currency_options\";s:1:\"1\";s:20:\"currency_webservicex\";s:1:\"0\";s:15:\"currency_import\";s:1:\"0\";}}',NULL,NULL);
 
 /*!40000 ALTER TABLE `magadmin_user` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -148,7 +148,7 @@ CREATE TABLE `magadminnotification_inbox` (
   KEY `IDX_MAGADMINNOTIFICATION_INBOX_SEVERITY` (`severity`),
   KEY `IDX_MAGADMINNOTIFICATION_INBOX_IS_READ` (`is_read`),
   KEY `IDX_MAGADMINNOTIFICATION_INBOX_IS_REMOVE` (`is_remove`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8 COMMENT='Adminnotification Inbox';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Adminnotification Inbox';
 
 LOCK TABLES `magadminnotification_inbox` WRITE;
 /*!40000 ALTER TABLE `magadminnotification_inbox` DISABLE KEYS */;
@@ -372,7 +372,7 @@ CREATE TABLE `magapi2_acl_role` (
   PRIMARY KEY (`entity_id`),
   KEY `IDX_MAGAPI2_ACL_ROLE_CREATED_AT` (`created_at`),
   KEY `IDX_MAGAPI2_ACL_ROLE_UPDATED_AT` (`updated_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Api2 Global ACL Roles';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Api2 Global ACL Roles';
 
 LOCK TABLES `magapi2_acl_role` WRITE;
 /*!40000 ALTER TABLE `magapi2_acl_role` DISABLE KEYS */;
@@ -509,15 +509,25 @@ CREATE TABLE `magcatalog_category_entity` (
   PRIMARY KEY (`entity_id`),
   KEY `IDX_MAGCATALOG_CATEGORY_ENTITY_LEVEL` (`level`),
   KEY `IDX_MAGCATALOG_CATEGORY_ENTITY_PATH_ENTITY_ID` (`path`,`entity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Catalog Category Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Category Table';
 
 LOCK TABLES `magcatalog_category_entity` WRITE;
 /*!40000 ALTER TABLE `magcatalog_category_entity` DISABLE KEYS */;
 
 INSERT INTO `magcatalog_category_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `parent_id`, `created_at`, `updated_at`, `path`, `position`, `level`, `children_count`)
 VALUES
-	(1,3,0,0,'2015-05-20 13:59:30','2015-05-20 13:59:30','1',0,0,1),
-	(2,3,3,1,'2015-05-20 13:59:31','2015-05-20 13:59:31','1/2',1,1,0);
+	(1,3,0,0,'2015-05-20 13:59:30','2015-05-20 13:59:30','1',0,0,11),
+	(2,3,3,1,'2015-05-20 13:59:31','2015-05-20 13:59:31','1/2',1,1,10),
+	(3,3,3,2,'2015-12-06 08:08:24','2015-06-12 10:50:21','1/2/3',1,2,2),
+	(4,3,3,2,'2015-06-12 08:10:49','2015-06-12 08:10:49','1/2/4',2,2,2),
+	(5,3,3,2,'2015-06-12 08:13:43','2015-06-12 08:13:43','1/2/5',3,2,3),
+	(6,3,3,5,'2015-06-12 08:15:52','2015-06-12 08:15:52','1/2/5/6',1,3,0),
+	(7,3,3,5,'2015-06-12 08:17:11','2015-06-12 08:17:11','1/2/5/7',2,3,0),
+	(8,3,3,5,'2015-06-12 08:18:55','2015-06-12 08:18:55','1/2/5/8',3,3,0),
+	(9,3,3,3,'2015-06-12 08:21:00','2015-06-12 08:21:00','1/2/3/9',1,3,0),
+	(10,3,3,3,'2015-06-12 08:22:20','2015-06-12 08:22:20','1/2/3/10',2,3,0),
+	(11,3,3,4,'2015-06-12 08:23:28','2015-06-12 08:23:28','1/2/4/11',1,3,0),
+	(12,3,3,4,'2015-06-12 08:24:32','2015-06-12 08:24:32','1/2/4/12',2,3,0);
 
 /*!40000 ALTER TABLE `magcatalog_category_entity` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -545,6 +555,34 @@ CREATE TABLE `magcatalog_category_entity_datetime` (
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_DTIME_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Category Datetime Attribute Backend Table';
 
+LOCK TABLES `magcatalog_category_entity_datetime` WRITE;
+/*!40000 ALTER TABLE `magcatalog_category_entity_datetime` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_category_entity_datetime` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`)
+VALUES
+	(1,3,59,0,3,NULL),
+	(2,3,60,0,3,NULL),
+	(3,3,59,0,4,NULL),
+	(4,3,60,0,4,NULL),
+	(5,3,59,0,5,NULL),
+	(6,3,60,0,5,NULL),
+	(7,3,59,0,6,NULL),
+	(8,3,60,0,6,NULL),
+	(9,3,59,0,7,NULL),
+	(10,3,60,0,7,NULL),
+	(11,3,59,0,8,NULL),
+	(12,3,60,0,8,NULL),
+	(13,3,59,0,9,NULL),
+	(14,3,60,0,9,NULL),
+	(15,3,59,0,10,NULL),
+	(16,3,60,0,10,NULL),
+	(17,3,59,0,11,NULL),
+	(18,3,60,0,11,NULL),
+	(19,3,59,0,12,NULL),
+	(20,3,60,0,12,NULL);
+
+/*!40000 ALTER TABLE `magcatalog_category_entity_datetime` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_category_entity_decimal
@@ -569,6 +607,24 @@ CREATE TABLE `magcatalog_category_entity_decimal` (
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_DEC_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Category Decimal Attribute Backend Table';
 
+LOCK TABLES `magcatalog_category_entity_decimal` WRITE;
+/*!40000 ALTER TABLE `magcatalog_category_entity_decimal` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_category_entity_decimal` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`)
+VALUES
+	(1,3,70,0,3,NULL),
+	(2,3,70,0,4,NULL),
+	(3,3,70,0,5,NULL),
+	(4,3,70,0,6,NULL),
+	(5,3,70,0,7,NULL),
+	(6,3,70,0,8,NULL),
+	(7,3,70,0,9,NULL),
+	(8,3,70,0,10,NULL),
+	(9,3,70,0,11,NULL),
+	(10,3,70,0,12,NULL);
+
+/*!40000 ALTER TABLE `magcatalog_category_entity_decimal` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_category_entity_int
@@ -591,7 +647,7 @@ CREATE TABLE `magcatalog_category_entity_int` (
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_INT_ATTR_ID_MAGEAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `mageav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_INT_ENTT_ID_MAGCAT_CTGR_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `magcatalog_category_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_INT_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Catalog Category Integer Attribute Backend Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Category Integer Attribute Backend Table';
 
 LOCK TABLES `magcatalog_category_entity_int` WRITE;
 /*!40000 ALTER TABLE `magcatalog_category_entity_int` DISABLE KEYS */;
@@ -603,7 +659,67 @@ VALUES
 	(3,3,42,0,2,1),
 	(4,3,67,0,2,1),
 	(5,3,42,1,2,1),
-	(6,3,67,1,2,1);
+	(6,3,67,1,2,1),
+	(7,3,42,0,3,1),
+	(8,3,67,0,3,1),
+	(9,3,50,0,3,NULL),
+	(10,3,51,0,3,1),
+	(11,3,68,0,3,0),
+	(12,3,69,0,3,0),
+	(13,3,42,0,4,1),
+	(14,3,67,0,4,1),
+	(15,3,50,0,4,NULL),
+	(16,3,51,0,4,0),
+	(17,3,68,0,4,0),
+	(18,3,69,0,4,0),
+	(19,3,42,0,5,1),
+	(20,3,67,0,5,1),
+	(21,3,50,0,5,NULL),
+	(22,3,51,0,5,0),
+	(23,3,68,0,5,0),
+	(24,3,69,0,5,0),
+	(25,3,42,0,6,1),
+	(26,3,67,0,6,1),
+	(27,3,50,0,6,NULL),
+	(28,3,51,0,6,0),
+	(29,3,68,0,6,0),
+	(30,3,69,0,6,0),
+	(31,3,42,0,7,1),
+	(32,3,67,0,7,1),
+	(33,3,50,0,7,NULL),
+	(34,3,51,0,7,0),
+	(35,3,68,0,7,0),
+	(36,3,69,0,7,0),
+	(37,3,42,0,8,1),
+	(38,3,67,0,8,1),
+	(39,3,50,0,8,NULL),
+	(40,3,51,0,8,0),
+	(41,3,68,0,8,0),
+	(42,3,69,0,8,0),
+	(43,3,42,0,9,1),
+	(44,3,67,0,9,1),
+	(45,3,50,0,9,NULL),
+	(46,3,51,0,9,0),
+	(47,3,68,0,9,0),
+	(48,3,69,0,9,0),
+	(49,3,42,0,10,1),
+	(50,3,67,0,10,1),
+	(51,3,50,0,10,NULL),
+	(52,3,51,0,10,0),
+	(53,3,68,0,10,0),
+	(54,3,69,0,10,0),
+	(55,3,42,0,11,1),
+	(56,3,67,0,11,1),
+	(57,3,50,0,11,NULL),
+	(58,3,51,0,11,0),
+	(59,3,68,0,11,0),
+	(60,3,69,0,11,0),
+	(61,3,42,0,12,1),
+	(62,3,67,0,12,1),
+	(63,3,50,0,12,NULL),
+	(64,3,51,0,12,0),
+	(65,3,68,0,12,0),
+	(66,3,69,0,12,0);
 
 /*!40000 ALTER TABLE `magcatalog_category_entity_int` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -629,7 +745,7 @@ CREATE TABLE `magcatalog_category_entity_text` (
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_TEXT_ATTR_ID_MAGEAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `mageav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_TEXT_ENTT_ID_MAGCAT_CTGR_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `magcatalog_category_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_TEXT_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Catalog Category Text Attribute Backend Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Category Text Attribute Backend Table';
 
 LOCK TABLES `magcatalog_category_entity_text` WRITE;
 /*!40000 ALTER TABLE `magcatalog_category_entity_text` DISABLE KEYS */;
@@ -639,7 +755,57 @@ VALUES
 	(1,3,65,0,1,NULL),
 	(2,3,65,1,1,NULL),
 	(3,3,65,0,2,NULL),
-	(4,3,65,1,2,NULL);
+	(4,3,65,1,2,NULL),
+	(5,3,44,0,3,'Our range of quality literature.'),
+	(6,3,47,0,3,'books,manuals,novels,literature'),
+	(7,3,48,0,3,'Our range of quality literature.'),
+	(8,3,62,0,3,NULL),
+	(9,3,65,0,3,NULL),
+	(10,3,44,0,4,'Our wide range of music, available as CD\'s, or downloadable in MP3 format'),
+	(11,3,47,0,4,'music,cd,charts,singles,albums'),
+	(12,3,48,0,4,'Our wide range of music, available as CD\'s, or downloadable in MP3 format'),
+	(13,3,62,0,4,NULL),
+	(14,3,65,0,4,NULL),
+	(15,3,44,0,5,'Waste hours of precious time on your PS3 or XBox instead of coding PHP'),
+	(16,3,47,0,5,'video,games'),
+	(17,3,48,0,5,'Lots of video games for PC, Mac OS X, Gameboy, Playstation, Megadrive, and NES'),
+	(18,3,62,0,5,NULL),
+	(19,3,65,0,5,NULL),
+	(20,3,44,0,6,'PC Games. Minimum requirements:\r\nPentium 4 with 800 GB memory\r\n10.7 TB Hard disk\r\nMatrox Mystique graphics card'),
+	(21,3,47,0,6,'pc,games,windows'),
+	(22,3,48,0,6,'pc games'),
+	(23,3,62,0,6,NULL),
+	(24,3,65,0,6,NULL),
+	(25,3,44,0,7,'Games for your Mac. Shouldn\'t you be coding?'),
+	(26,3,47,0,7,'games, mac,osx,os x'),
+	(27,3,48,0,7,'Games for Mac OS X'),
+	(28,3,62,0,7,NULL),
+	(29,3,65,0,7,NULL),
+	(30,3,44,0,8,'Megadrive Games!'),
+	(31,3,47,0,8,'games,sega,megadrive'),
+	(32,3,48,0,8,'Games for Sega Megadrive'),
+	(33,3,62,0,8,NULL),
+	(34,3,65,0,8,NULL),
+	(35,3,44,0,9,'The fiction section. Read as much as you like, but none of it is real!'),
+	(36,3,47,0,9,'books,fiction'),
+	(37,3,48,0,9,'fiction books'),
+	(38,3,62,0,9,NULL),
+	(39,3,65,0,9,NULL),
+	(40,3,44,0,10,'Books that tell you actual facts. Manuals, history books, that sort of thing.'),
+	(41,3,47,0,10,'books,reference,fact,manuals'),
+	(42,3,48,0,10,'Factual Books'),
+	(43,3,62,0,10,NULL),
+	(44,3,65,0,10,NULL),
+	(45,3,44,0,11,'Awesome music you really ought to be listening to.'),
+	(46,3,47,0,11,'music,awesome'),
+	(47,3,48,0,11,'Awesome music you really ought to be listening to.'),
+	(48,3,62,0,11,NULL),
+	(49,3,65,0,11,NULL),
+	(50,3,44,0,12,'Crap music you shouldn\'t waste time listening to!'),
+	(51,3,47,0,12,'music, crap'),
+	(52,3,48,0,12,'Crap music you shouldn\'t waste time listening to!'),
+	(53,3,62,0,12,NULL),
+	(54,3,65,0,12,NULL);
 
 /*!40000 ALTER TABLE `magcatalog_category_entity_text` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -665,7 +831,7 @@ CREATE TABLE `magcatalog_category_entity_varchar` (
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_VCHR_ATTR_ID_MAGEAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `mageav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_VCHR_ENTT_ID_MAGCAT_CTGR_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `magcatalog_category_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGCAT_CTGR_ENTT_VCHR_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='Catalog Category Varchar Attribute Backend Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Category Varchar Attribute Backend Table';
 
 LOCK TABLES `magcatalog_category_entity_varchar` WRITE;
 /*!40000 ALTER TABLE `magcatalog_category_entity_varchar` DISABLE KEYS */;
@@ -678,7 +844,87 @@ VALUES
 	(4,3,41,0,2,'Default Category'),
 	(5,3,41,1,2,'Default Category'),
 	(6,3,49,1,2,'PRODUCTS'),
-	(7,3,43,1,2,'default-category');
+	(7,3,43,1,2,'default-category'),
+	(8,3,41,0,3,'Books'),
+	(9,3,43,0,3,'books'),
+	(10,3,46,0,3,'Books'),
+	(11,3,49,0,3,'PRODUCTS'),
+	(12,3,58,0,3,NULL),
+	(13,3,61,0,3,NULL),
+	(14,3,57,1,3,'books.html'),
+	(15,3,57,0,3,'books.html'),
+	(16,3,41,0,4,'Music'),
+	(17,3,43,0,4,'music'),
+	(18,3,46,0,4,'Music'),
+	(19,3,49,0,4,'PRODUCTS'),
+	(20,3,58,0,4,NULL),
+	(21,3,61,0,4,NULL),
+	(22,3,57,1,4,'music.html'),
+	(23,3,57,0,4,'music.html'),
+	(24,3,41,0,5,'Games'),
+	(25,3,43,0,5,'video-games'),
+	(26,3,46,0,5,'Video Games'),
+	(27,3,49,0,5,'PRODUCTS'),
+	(28,3,58,0,5,NULL),
+	(29,3,61,0,5,NULL),
+	(30,3,57,1,5,'video-games.html'),
+	(31,3,57,0,5,'video-games.html'),
+	(32,3,41,0,6,'PC'),
+	(33,3,43,0,6,'pc'),
+	(34,3,46,0,6,'PC Games'),
+	(35,3,49,0,6,'PRODUCTS'),
+	(36,3,58,0,6,NULL),
+	(37,3,61,0,6,NULL),
+	(38,3,57,1,6,'video-games/pc.html'),
+	(39,3,57,0,6,'video-games/pc.html'),
+	(40,3,41,0,7,'Mac OS X'),
+	(41,3,43,0,7,'mac-os-x'),
+	(42,3,46,0,7,'Games for Mac OS X'),
+	(43,3,49,0,7,'PRODUCTS'),
+	(44,3,58,0,7,NULL),
+	(45,3,61,0,7,NULL),
+	(46,3,57,1,7,'video-games/mac-os-x.html'),
+	(47,3,57,0,7,'video-games/mac-os-x.html'),
+	(48,3,41,0,8,'Megadrive'),
+	(49,3,43,0,8,'megadrive'),
+	(50,3,46,0,8,'Games for Megadrive'),
+	(51,3,49,0,8,'PRODUCTS'),
+	(52,3,58,0,8,NULL),
+	(53,3,61,0,8,NULL),
+	(54,3,57,1,8,'video-games/megadrive.html'),
+	(55,3,57,0,8,'video-games/megadrive.html'),
+	(56,3,41,0,9,'Fiction'),
+	(57,3,43,0,9,'fiction'),
+	(58,3,46,0,9,'Books - Fiction'),
+	(59,3,49,0,9,'PRODUCTS'),
+	(60,3,58,0,9,NULL),
+	(61,3,61,0,9,NULL),
+	(62,3,57,1,9,'books/fiction.html'),
+	(63,3,57,0,9,'books/fiction.html'),
+	(64,3,41,0,10,'Reference'),
+	(65,3,43,0,10,'reference'),
+	(66,3,46,0,10,'Books - Reference'),
+	(67,3,49,0,10,'PRODUCTS'),
+	(68,3,58,0,10,NULL),
+	(69,3,61,0,10,NULL),
+	(70,3,57,1,10,'books/reference.html'),
+	(71,3,57,0,10,'books/reference.html'),
+	(72,3,41,0,11,'Awesome'),
+	(73,3,43,0,11,'awesome'),
+	(74,3,46,0,11,'Awesome Music'),
+	(75,3,49,0,11,'PRODUCTS'),
+	(76,3,58,0,11,NULL),
+	(77,3,61,0,11,NULL),
+	(78,3,57,1,11,'music/awesome.html'),
+	(79,3,57,0,11,'music/awesome.html'),
+	(80,3,41,0,12,'Crap'),
+	(81,3,43,0,12,'crap'),
+	(82,3,46,0,12,'Music - Crap'),
+	(83,3,49,0,12,'PRODUCTS'),
+	(84,3,58,0,12,NULL),
+	(85,3,61,0,12,NULL),
+	(86,3,57,1,12,'music/crap.html'),
+	(87,3,57,0,12,'music/crap.html');
 
 /*!40000 ALTER TABLE `magcatalog_category_entity_varchar` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -760,6 +1006,26 @@ CREATE TABLE `magcatalog_category_product` (
   CONSTRAINT `FK_MAGCAT_CTGR_PRD_PRD_ID_MAGCAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`product_id`) REFERENCES `magcatalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product To Category Linkage Table';
 
+LOCK TABLES `magcatalog_category_product` WRITE;
+/*!40000 ALTER TABLE `magcatalog_category_product` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_category_product` (`category_id`, `product_id`, `position`)
+VALUES
+	(3,1,1),
+	(3,2,1),
+	(3,3,1),
+	(3,4,1),
+	(3,5,1),
+	(3,6,1),
+	(9,1,1),
+	(9,2,1),
+	(9,3,1),
+	(9,4,1),
+	(9,5,1),
+	(9,6,1);
+
+/*!40000 ALTER TABLE `magcatalog_category_product` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_category_product_index
@@ -782,6 +1048,32 @@ CREATE TABLE `magcatalog_category_product_index` (
   CONSTRAINT `FK_MAGCAT_CTGR_PRD_IDX_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Category Product Index';
 
+LOCK TABLES `magcatalog_category_product_index` WRITE;
+/*!40000 ALTER TABLE `magcatalog_category_product_index` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_category_product_index` (`category_id`, `product_id`, `position`, `is_parent`, `store_id`, `visibility`)
+VALUES
+	(2,1,20005,0,1,4),
+	(2,2,60001,0,1,4),
+	(2,3,60001,0,1,4),
+	(2,4,60001,0,1,4),
+	(2,5,60001,0,1,4),
+	(2,6,60001,0,1,4),
+	(3,1,1,1,1,4),
+	(3,2,1,1,1,4),
+	(3,3,1,1,1,4),
+	(3,4,1,1,1,4),
+	(3,5,1,1,1,4),
+	(3,6,1,1,1,4),
+	(9,1,1,1,1,4),
+	(9,2,1,1,1,4),
+	(9,3,1,1,1,4),
+	(9,4,1,1,1,4),
+	(9,5,1,1,1,4),
+	(9,6,1,1,1,4);
+
+/*!40000 ALTER TABLE `magcatalog_category_product_index` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_category_product_index_enbl_idx
@@ -1157,6 +1449,20 @@ CREATE TABLE `magcatalog_product_entity` (
   CONSTRAINT `FK_MAGCAT_PRD_ENTT_ENTT_TYPE_ID_MAGEAV_ENTT_TYPE_ENTT_TYPE_ID` FOREIGN KEY (`entity_type_id`) REFERENCES `mageav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Table';
 
+LOCK TABLES `magcatalog_product_entity` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_entity` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `type_id`, `sku`, `has_options`, `required_options`, `created_at`, `updated_at`)
+VALUES
+	(1,4,4,'simple','BK000001',0,0,'2015-06-12 08:30:37','2015-06-12 09:31:52'),
+	(2,4,4,'simple','BK000002',0,0,'2015-12-06 09:37:32','2015-06-12 09:39:52'),
+	(3,4,4,'simple','BK000003',0,0,'2015-12-06 09:47:48','2015-06-12 09:49:11'),
+	(4,4,4,'simple','BK000004',0,0,'2015-12-06 09:52:56','2015-06-12 09:55:02'),
+	(5,4,4,'simple','BK000005',0,0,'2015-12-06 10:00:34','2015-06-12 10:01:57'),
+	(6,4,4,'simple','BK000006',0,0,'2015-12-06 10:06:58','2015-06-12 10:08:18');
+
+/*!40000 ALTER TABLE `magcatalog_product_entity` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_entity_datetime
@@ -1181,6 +1487,50 @@ CREATE TABLE `magcatalog_product_entity_datetime` (
   CONSTRAINT `FK_MAGCAT_PRD_ENTT_DTIME_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Datetime Attribute Backend Table';
 
+LOCK TABLES `magcatalog_product_entity_datetime` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_entity_datetime` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_entity_datetime` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`)
+VALUES
+	(1,4,93,0,1,NULL),
+	(2,4,94,0,1,NULL),
+	(3,4,77,0,1,NULL),
+	(4,4,78,0,1,NULL),
+	(5,4,104,0,1,NULL),
+	(6,4,105,0,1,NULL),
+	(43,4,93,0,2,NULL),
+	(44,4,94,0,2,NULL),
+	(45,4,77,0,2,NULL),
+	(46,4,78,0,2,NULL),
+	(47,4,104,0,2,NULL),
+	(48,4,105,0,2,NULL),
+	(67,4,93,0,3,NULL),
+	(68,4,94,0,3,NULL),
+	(69,4,77,0,3,NULL),
+	(70,4,78,0,3,NULL),
+	(71,4,104,0,3,NULL),
+	(72,4,105,0,3,NULL),
+	(91,4,93,0,4,NULL),
+	(92,4,94,0,4,NULL),
+	(93,4,77,0,4,NULL),
+	(94,4,78,0,4,NULL),
+	(95,4,104,0,4,NULL),
+	(96,4,105,0,4,NULL),
+	(115,4,93,0,5,NULL),
+	(116,4,94,0,5,NULL),
+	(117,4,77,0,5,NULL),
+	(118,4,78,0,5,NULL),
+	(119,4,104,0,5,NULL),
+	(120,4,105,0,5,NULL),
+	(139,4,93,0,6,NULL),
+	(140,4,94,0,6,NULL),
+	(141,4,77,0,6,NULL),
+	(142,4,78,0,6,NULL),
+	(143,4,104,0,6,NULL),
+	(144,4,105,0,6,NULL);
+
+/*!40000 ALTER TABLE `magcatalog_product_entity_datetime` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_entity_decimal
@@ -1205,6 +1555,38 @@ CREATE TABLE `magcatalog_product_entity_decimal` (
   CONSTRAINT `FK_MAGCAT_PRD_ENTT_DEC_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Decimal Attribute Backend Table';
 
+LOCK TABLES `magcatalog_product_entity_decimal` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_entity_decimal` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_entity_decimal` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`)
+VALUES
+	(1,4,80,0,1,4.0000),
+	(2,4,75,0,1,60.0000),
+	(3,4,76,0,1,NULL),
+	(4,4,120,0,1,NULL),
+	(23,4,80,0,2,0.5000),
+	(24,4,75,0,2,9.9900),
+	(25,4,76,0,2,NULL),
+	(26,4,120,0,2,NULL),
+	(36,4,80,0,3,0.4000),
+	(37,4,75,0,3,9.9900),
+	(38,4,76,0,3,NULL),
+	(39,4,120,0,3,NULL),
+	(49,4,80,0,4,0.4000),
+	(50,4,75,0,4,3.9900),
+	(51,4,76,0,4,NULL),
+	(52,4,120,0,4,NULL),
+	(62,4,80,0,5,0.3000),
+	(63,4,75,0,5,3.9900),
+	(64,4,76,0,5,NULL),
+	(65,4,120,0,5,NULL),
+	(75,4,80,0,6,0.5000),
+	(76,4,75,0,6,8.9900),
+	(77,4,76,0,6,NULL),
+	(78,4,120,0,6,NULL);
+
+/*!40000 ALTER TABLE `magcatalog_product_entity_decimal` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_entity_gallery
@@ -1278,6 +1660,38 @@ CREATE TABLE `magcatalog_product_entity_int` (
   CONSTRAINT `FK_MAGCAT_PRD_ENTT_INT_ENTT_ID_MAGCAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `magcatalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Integer Attribute Backend Table';
 
+LOCK TABLES `magcatalog_product_entity_int` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_entity_int` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_entity_int` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`)
+VALUES
+	(1,4,96,0,1,1),
+	(2,4,102,0,1,4),
+	(3,4,121,0,1,0),
+	(4,4,100,0,1,0),
+	(5,4,96,0,2,1),
+	(6,4,102,0,2,4),
+	(7,4,121,0,2,0),
+	(8,4,100,0,2,0),
+	(9,4,96,0,3,1),
+	(10,4,102,0,3,4),
+	(11,4,121,0,3,0),
+	(12,4,100,0,3,0),
+	(13,4,96,0,4,1),
+	(14,4,102,0,4,4),
+	(15,4,121,0,4,0),
+	(16,4,100,0,4,0),
+	(17,4,96,0,5,1),
+	(18,4,102,0,5,4),
+	(19,4,121,0,5,0),
+	(20,4,100,0,5,0),
+	(21,4,96,0,6,1),
+	(22,4,102,0,6,4),
+	(23,4,121,0,6,0),
+	(24,4,100,0,6,0);
+
+/*!40000 ALTER TABLE `magcatalog_product_entity_int` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_entity_media_gallery
@@ -1297,6 +1711,20 @@ CREATE TABLE `magcatalog_product_entity_media_gallery` (
   CONSTRAINT `FK_MAGCAT_PRD_ENTT_MDA_GLR_ENTT_ID_MAGCAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `magcatalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Media Gallery Attribute Backend Table';
 
+LOCK TABLES `magcatalog_product_entity_media_gallery` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_entity_media_gallery` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_entity_media_gallery` (`value_id`, `attribute_id`, `entity_id`, `value`)
+VALUES
+	(1,88,1,'/i/n/index.jpg'),
+	(2,88,2,'/i/n/index_1.jpg'),
+	(3,88,3,'/s/c/screen_shot_2015-06-12_at_10.44.40.png'),
+	(4,88,4,'/i/n/index_2.jpg'),
+	(5,88,5,'/a/s/asim.jpg'),
+	(6,88,6,'/s/c/screen_shot_2015-06-12_at_11.03.09.png');
+
+/*!40000 ALTER TABLE `magcatalog_product_entity_media_gallery` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_entity_media_gallery_value
@@ -1316,6 +1744,20 @@ CREATE TABLE `magcatalog_product_entity_media_gallery_value` (
   CONSTRAINT `FK_MAGCAT_PRD_ENTT_MDA_GLR_VAL_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Media Gallery Attribute Value Table';
 
+LOCK TABLES `magcatalog_product_entity_media_gallery_value` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_entity_media_gallery_value` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_entity_media_gallery_value` (`value_id`, `store_id`, `label`, `position`, `disabled`)
+VALUES
+	(1,0,'A Song of Ice and Fire box set',1,0),
+	(2,0,NULL,1,0),
+	(3,0,NULL,1,0),
+	(4,0,NULL,1,0),
+	(5,0,NULL,1,0),
+	(6,0,NULL,1,0);
+
+/*!40000 ALTER TABLE `magcatalog_product_entity_media_gallery_value` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_entity_text
@@ -1340,6 +1782,38 @@ CREATE TABLE `magcatalog_product_entity_text` (
   CONSTRAINT `FK_MAGCAT_PRD_ENTT_TEXT_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Text Attribute Backend Table';
 
+LOCK TABLES `magcatalog_product_entity_text` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_entity_text` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_entity_text` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`)
+VALUES
+	(1,4,72,0,1,'George R.R. Martin’s A Song of Ice and Fire is the greatest fantasy epic of the modern age, and is now available in a collectible box set, including an exclusive fold-out map of Westeros. Now a major Sky Atlantic TV series from HBO, featuring a stellar cast.\r\n\r\nGeorge R.R. Martin\'s A Song of Ice and Fire series has set the benchmark for contemporary epic fantasy. Labelled by Time magazine as one of the top 100 most influential people in the world, Martin has conjured a world as complex and vibrant as that of J.R.R. Tolkien’s, populated by a huge cast of fascinating, complex characters, and boasting a history that stretches back twelve thousand years.\r\n\r\nThree great storylines weave through the books, charting the civil war for control of the Seven Kingdoms; the defence of the towering Wall of ice in the uttermost north against the unearthly threat of the Others; and across the Narrow Sea the rise to power of Daenerys Targaryen and the last live dragons in the world.\r\n\r\nThe HBO adaption of A Game of Thrones is currently airing worldwide and has already proved so popular that a second season has been commissioned.\r\n\r\nThe box set includes:\r\nA GAME OF THRONES\r\nA CLASH OF KINGS\r\nA STORM OF SWORDS, 1: STEEL AND SNOW\r\nA STORM OF SWORDS, 2: BLOOD AND GOLD\r\nA FEAST FOR CROWS\r\nA DANCE WITH DRAGONS, 1: DREAMS AND DUST\r\nA DANCE WITH DRAGONS, 2: AFTER THE FEAST\r\nThe dimension of the box set is 197mm x 130mm.'),
+	(2,4,73,0,1,'George R.R. Martin’s A Song of Ice and Fire is the greatest fantasy epic of the modern age, and is now available in a collectible box set, including an exclusive fold-out map of Westeros. Now a major Sky Atlantic TV series from HBO, featuring a stellar cast.'),
+	(3,4,83,0,1,NULL),
+	(4,4,106,0,1,NULL),
+	(17,4,72,0,2,'It is difficult to overestimate the effect of this ground breaking novel on present day science fiction - hardly anything I read today by writers like Iain Banks, Alastair Reynolds, Peter Hamilton et al escapes its brilliant influence. I read it when it first came out in the late seventies and was staggered by its vision. If many of its insights now seem trite, it is only because they have been re-used by other writers to such a degree that they have become almost commonplace. Like Niven\'s Ringworld, it has shaped modern day science fiction. That is why it is a classic. '),
+	(18,4,73,0,2,'A Classic Science Fiction novel from Arthur C Clarke'),
+	(19,4,83,0,2,NULL),
+	(20,4,106,0,2,NULL),
+	(27,4,72,0,3,'A dazzling speculative novel of \'counterfactual history\' from one of America\'s most highly-regarded science fiction authors, Philip K. Dick\'s The Man in the High Castle includes an introduction by Eric Brown in Penguin Modern Classics.\r\n\r\nPhilip K. Dick\'s acclaimed cult novel gives us a horrifying glimpse of an alternative world - one where the Allies have lost the Second World War. In this nightmare dystopia the Nazis have taken over New York, the Japanese control California and the African continent is virtually wiped out. In a neutral buffer zone in America that divides the world\'s new rival superpowers, lives the author of an underground bestseller. His book offers a new vision of reality - an alternative theory of world history in which the Axis powers were defeated - giving hope to the disenchanted. Does \'reality\' lie with him, or is his world just one among many others?\r\n\r\nPhilip Kindred Dick (1928-82) was born in Chicago in 1928. His career as a science fiction writer comprised an early burst of short stories followed by a stream of novels, typically character studies incorporating androids, drugs, and hallucinations. His best works are generally agreed to be The Man in the High Castle and Do Androids Dream of Electric Sheep?, the inspiration for the movie Blade Runner.\r\n\r\nIf you enjoyed The Man in the High Castle, you might like Yevgeny Zamyatin\'s We, also available in Penguin Classics.\r\n\r\n\'The most brilliant science fiction mind on any planet\'\r\n\r\nRolling Stone\r\n\r\n\'Dick\'s finest book, and one of the very best science fiction novels ever published\'\r\n\r\nEric Brown'),
+	(28,4,73,0,3,'Philip K. Dick\'s acclaimed cult novel gives us a horrifying glimpse of an alternative world - one where the Allies have lost the Second World War. '),
+	(29,4,83,0,3,NULL),
+	(30,4,106,0,3,NULL),
+	(37,4,72,0,4,'The third installment of Frank Herbert\'s classic scifi series.'),
+	(38,4,73,0,4,'The third installment of Frank Herbert\'s classic scifi series.'),
+	(39,4,83,0,4,NULL),
+	(40,4,106,0,4,NULL),
+	(47,4,72,0,5,'Another Isaac Asimov classic'),
+	(48,4,73,0,5,'Another Isaac Asimov classic'),
+	(49,4,83,0,5,NULL),
+	(50,4,106,0,5,NULL),
+	(57,4,72,0,6,'The history of middle earth, a very heavy read indeed.'),
+	(58,4,73,0,6,'The history of middle earth, a very heavy read indeed.'),
+	(59,4,83,0,6,NULL),
+	(60,4,106,0,6,NULL);
+
+/*!40000 ALTER TABLE `magcatalog_product_entity_text` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_entity_tier_price
@@ -1389,6 +1863,128 @@ CREATE TABLE `magcatalog_product_entity_varchar` (
   CONSTRAINT `FK_MAGCAT_PRD_ENTT_VCHR_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Varchar Attribute Backend Table';
 
+LOCK TABLES `magcatalog_product_entity_varchar` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_entity_varchar` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_entity_varchar` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`)
+VALUES
+	(1,4,71,0,1,'A Song of Ice and Fire, 7 Volumes'),
+	(2,4,97,0,1,'a-song-of-ice-and-fire'),
+	(3,4,117,0,1,'GB'),
+	(4,4,118,0,1,'2'),
+	(5,4,119,0,1,'4'),
+	(6,4,82,0,1,NULL),
+	(7,4,84,0,1,NULL),
+	(8,4,85,0,1,'/i/n/index.jpg'),
+	(9,4,86,0,1,'/i/n/index.jpg'),
+	(10,4,87,0,1,'/i/n/index.jpg'),
+	(11,4,103,0,1,NULL),
+	(12,4,107,0,1,NULL),
+	(13,4,109,0,1,'container1'),
+	(14,4,122,0,1,NULL),
+	(15,4,98,1,1,'a-song-of-ice-and-fire.html'),
+	(16,4,98,0,1,'a-song-of-ice-and-fire.html'),
+	(42,4,112,0,1,'A Song of Ice and Fire box set'),
+	(43,4,113,0,1,'A Song of Ice and Fire box set'),
+	(44,4,114,0,1,'A Song of Ice and Fire box set'),
+	(53,4,71,0,2,'Rendezvous With Rama'),
+	(54,4,97,0,2,'rendezvous-with-rama'),
+	(55,4,117,0,2,'GB'),
+	(56,4,118,0,2,'2'),
+	(57,4,119,0,2,'4'),
+	(58,4,82,0,2,NULL),
+	(59,4,84,0,2,NULL),
+	(60,4,85,0,2,'/i/n/index_1.jpg'),
+	(61,4,86,0,2,'/i/n/index_1.jpg'),
+	(62,4,87,0,2,'/i/n/index_1.jpg'),
+	(63,4,103,0,2,NULL),
+	(64,4,107,0,2,NULL),
+	(65,4,109,0,2,'container1'),
+	(66,4,122,0,2,NULL),
+	(67,4,98,1,2,'rendezvous-with-rama.html'),
+	(68,4,98,0,2,'rendezvous-with-rama.html'),
+	(69,4,112,0,2,NULL),
+	(70,4,113,0,2,NULL),
+	(71,4,114,0,2,NULL),
+	(96,4,71,0,3,'The Man in the High Castle'),
+	(97,4,97,0,3,'the-man-in-the-high-castle'),
+	(98,4,117,0,3,NULL),
+	(99,4,118,0,3,'2'),
+	(100,4,119,0,3,'4'),
+	(101,4,82,0,3,NULL),
+	(102,4,84,0,3,NULL),
+	(103,4,85,0,3,'/s/c/screen_shot_2015-06-12_at_10.44.40.png'),
+	(104,4,86,0,3,'/s/c/screen_shot_2015-06-12_at_10.44.40.png'),
+	(105,4,87,0,3,'/s/c/screen_shot_2015-06-12_at_10.44.40.png'),
+	(106,4,103,0,3,NULL),
+	(107,4,107,0,3,NULL),
+	(108,4,109,0,3,'container1'),
+	(109,4,122,0,3,NULL),
+	(110,4,98,1,3,'the-man-in-the-high-castle.html'),
+	(111,4,98,0,3,'the-man-in-the-high-castle.html'),
+	(112,4,112,0,3,NULL),
+	(113,4,113,0,3,NULL),
+	(114,4,114,0,3,NULL),
+	(142,4,71,0,4,'Children of Dune'),
+	(143,4,97,0,4,'children-of-dune'),
+	(144,4,117,0,4,NULL),
+	(145,4,118,0,4,'2'),
+	(146,4,119,0,4,'4'),
+	(147,4,82,0,4,NULL),
+	(148,4,84,0,4,NULL),
+	(149,4,85,0,4,'/i/n/index_2.jpg'),
+	(150,4,86,0,4,'/i/n/index_2.jpg'),
+	(151,4,87,0,4,'/i/n/index_2.jpg'),
+	(152,4,103,0,4,NULL),
+	(153,4,107,0,4,NULL),
+	(154,4,109,0,4,'container1'),
+	(155,4,122,0,4,NULL),
+	(156,4,98,1,4,'children-of-dune.html'),
+	(157,4,98,0,4,'children-of-dune.html'),
+	(158,4,112,0,4,NULL),
+	(159,4,113,0,4,NULL),
+	(160,4,114,0,4,NULL),
+	(188,4,71,0,5,'The Moons of Jupiter'),
+	(189,4,97,0,5,'the-moons-of-jupiter'),
+	(190,4,117,0,5,NULL),
+	(191,4,118,0,5,'2'),
+	(192,4,119,0,5,'4'),
+	(193,4,82,0,5,NULL),
+	(194,4,84,0,5,NULL),
+	(195,4,85,0,5,'/a/s/asim.jpg'),
+	(196,4,86,0,5,'/a/s/asim.jpg'),
+	(197,4,87,0,5,'/a/s/asim.jpg'),
+	(198,4,103,0,5,NULL),
+	(199,4,107,0,5,NULL),
+	(200,4,109,0,5,'container1'),
+	(201,4,122,0,5,NULL),
+	(202,4,98,1,5,'the-moons-of-jupiter.html'),
+	(203,4,98,0,5,'the-moons-of-jupiter.html'),
+	(204,4,112,0,5,NULL),
+	(205,4,113,0,5,NULL),
+	(206,4,114,0,5,NULL),
+	(234,4,71,0,6,'The Silmarillion'),
+	(235,4,97,0,6,'the-silmarillion'),
+	(236,4,117,0,6,NULL),
+	(237,4,118,0,6,'2'),
+	(238,4,119,0,6,'4'),
+	(239,4,82,0,6,NULL),
+	(240,4,84,0,6,NULL),
+	(241,4,85,0,6,'/s/c/screen_shot_2015-06-12_at_11.03.09.png'),
+	(242,4,86,0,6,'/s/c/screen_shot_2015-06-12_at_11.03.09.png'),
+	(243,4,87,0,6,'/s/c/screen_shot_2015-06-12_at_11.03.09.png'),
+	(244,4,103,0,6,NULL),
+	(245,4,107,0,6,NULL),
+	(246,4,109,0,6,'container1'),
+	(247,4,122,0,6,NULL),
+	(248,4,98,1,6,'the-silmarillion.html'),
+	(249,4,98,0,6,'the-silmarillion.html'),
+	(250,4,112,0,6,NULL),
+	(251,4,113,0,6,NULL),
+	(252,4,114,0,6,NULL);
+
+/*!40000 ALTER TABLE `magcatalog_product_entity_varchar` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_flat_1
@@ -1468,6 +2064,20 @@ CREATE TABLE `magcatalog_product_index_eav` (
   CONSTRAINT `FK_MAGCAT_PRD_IDX_EAV_ENTT_ID_MAGCAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `magcatalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product EAV Index Table';
 
+LOCK TABLES `magcatalog_product_index_eav` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_index_eav` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_index_eav` (`entity_id`, `attribute_id`, `store_id`, `value`)
+VALUES
+	(1,121,1,0),
+	(2,121,1,0),
+	(3,121,1,0),
+	(4,121,1,0),
+	(5,121,1,0),
+	(6,121,1,0);
+
+/*!40000 ALTER TABLE `magcatalog_product_index_eav` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_index_eav_decimal
@@ -1566,6 +2176,15 @@ CREATE TABLE `magcatalog_product_index_eav_tmp` (
   KEY `IDX_MAGCATALOG_PRODUCT_INDEX_EAV_TMP_VALUE` (`value`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Catalog Product EAV Indexer Temp Table';
 
+LOCK TABLES `magcatalog_product_index_eav_tmp` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_index_eav_tmp` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_index_eav_tmp` (`entity_id`, `attribute_id`, `store_id`, `value`)
+VALUES
+	(6,121,1,0);
+
+/*!40000 ALTER TABLE `magcatalog_product_index_eav_tmp` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_index_group_price
@@ -1614,6 +2233,38 @@ CREATE TABLE `magcatalog_product_index_price` (
   CONSTRAINT `FK_MAGCAT_PRD_IDX_PRICE_WS_ID_MAGCORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `magcore_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Price Index Table';
 
+LOCK TABLES `magcatalog_product_index_price` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_index_price` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_index_price` (`entity_id`, `customer_group_id`, `website_id`, `tax_class_id`, `price`, `final_price`, `min_price`, `max_price`, `tier_price`, `group_price`)
+VALUES
+	(1,0,1,0,60.0000,60.0000,60.0000,60.0000,NULL,NULL),
+	(1,1,1,0,60.0000,60.0000,60.0000,60.0000,NULL,NULL),
+	(1,2,1,0,60.0000,60.0000,60.0000,60.0000,NULL,NULL),
+	(1,3,1,0,60.0000,60.0000,60.0000,60.0000,NULL,NULL),
+	(2,0,1,0,9.9900,9.9900,9.9900,9.9900,NULL,NULL),
+	(2,1,1,0,9.9900,9.9900,9.9900,9.9900,NULL,NULL),
+	(2,2,1,0,9.9900,9.9900,9.9900,9.9900,NULL,NULL),
+	(2,3,1,0,9.9900,9.9900,9.9900,9.9900,NULL,NULL),
+	(3,0,1,0,9.9900,9.9900,9.9900,9.9900,NULL,NULL),
+	(3,1,1,0,9.9900,9.9900,9.9900,9.9900,NULL,NULL),
+	(3,2,1,0,9.9900,9.9900,9.9900,9.9900,NULL,NULL),
+	(3,3,1,0,9.9900,9.9900,9.9900,9.9900,NULL,NULL),
+	(4,0,1,0,3.9900,3.9900,3.9900,3.9900,NULL,NULL),
+	(4,1,1,0,3.9900,3.9900,3.9900,3.9900,NULL,NULL),
+	(4,2,1,0,3.9900,3.9900,3.9900,3.9900,NULL,NULL),
+	(4,3,1,0,3.9900,3.9900,3.9900,3.9900,NULL,NULL),
+	(5,0,1,0,3.9900,3.9900,3.9900,3.9900,NULL,NULL),
+	(5,1,1,0,3.9900,3.9900,3.9900,3.9900,NULL,NULL),
+	(5,2,1,0,3.9900,3.9900,3.9900,3.9900,NULL,NULL),
+	(5,3,1,0,3.9900,3.9900,3.9900,3.9900,NULL,NULL),
+	(6,0,1,0,8.9900,8.9900,8.9900,8.9900,NULL,NULL),
+	(6,1,1,0,8.9900,8.9900,8.9900,8.9900,NULL,NULL),
+	(6,2,1,0,8.9900,8.9900,8.9900,8.9900,NULL,NULL),
+	(6,3,1,0,8.9900,8.9900,8.9900,8.9900,NULL,NULL);
+
+/*!40000 ALTER TABLE `magcatalog_product_index_price` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_index_price_bundle_idx
@@ -2026,6 +2677,18 @@ CREATE TABLE `magcatalog_product_index_price_tmp` (
   KEY `IDX_MAGCATALOG_PRODUCT_INDEX_PRICE_TMP_MIN_PRICE` (`min_price`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Catalog Product Price Indexer Temp Table';
 
+LOCK TABLES `magcatalog_product_index_price_tmp` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_index_price_tmp` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_index_price_tmp` (`entity_id`, `customer_group_id`, `website_id`, `tax_class_id`, `price`, `final_price`, `min_price`, `max_price`, `tier_price`, `group_price`)
+VALUES
+	(6,0,1,0,8.9900,8.9900,8.9900,8.9900,NULL,NULL),
+	(6,1,1,0,8.9900,8.9900,8.9900,8.9900,NULL,NULL),
+	(6,2,1,0,8.9900,8.9900,8.9900,8.9900,NULL,NULL),
+	(6,3,1,0,8.9900,8.9900,8.9900,8.9900,NULL,NULL);
+
+/*!40000 ALTER TABLE `magcatalog_product_index_price_tmp` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalog_product_index_tier_price
@@ -2067,7 +2730,7 @@ LOCK TABLES `magcatalog_product_index_website` WRITE;
 
 INSERT INTO `magcatalog_product_index_website` (`website_id`, `website_date`, `rate`)
 VALUES
-	(1,'2015-05-26',1);
+	(1,'2015-06-12',1);
 
 /*!40000 ALTER TABLE `magcatalog_product_index_website` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2108,7 +2771,7 @@ CREATE TABLE `magcatalog_product_link_attribute` (
   PRIMARY KEY (`product_link_attribute_id`),
   KEY `IDX_MAGCATALOG_PRODUCT_LINK_ATTRIBUTE_LINK_TYPE_ID` (`link_type_id`),
   CONSTRAINT `FK_D0908E3E1EBF9ECA0EB921538769D232` FOREIGN KEY (`link_type_id`) REFERENCES `magcatalog_product_link_type` (`link_type_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Link Attribute Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Link Attribute Table';
 
 LOCK TABLES `magcatalog_product_link_attribute` WRITE;
 /*!40000 ALTER TABLE `magcatalog_product_link_attribute` DISABLE KEYS */;
@@ -2194,7 +2857,7 @@ CREATE TABLE `magcatalog_product_link_type` (
   `link_type_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Link Type ID',
   `code` varchar(32) DEFAULT NULL COMMENT 'Code',
   PRIMARY KEY (`link_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Link Type Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Link Type Table';
 
 LOCK TABLES `magcatalog_product_link_type` WRITE;
 /*!40000 ALTER TABLE `magcatalog_product_link_type` DISABLE KEYS */;
@@ -2442,6 +3105,20 @@ CREATE TABLE `magcatalog_product_website` (
   CONSTRAINT `FK_MAGCAT_PRD_WS_WS_ID_MAGCORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `magcore_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product To Website Linkage Table';
 
+LOCK TABLES `magcatalog_product_website` WRITE;
+/*!40000 ALTER TABLE `magcatalog_product_website` DISABLE KEYS */;
+
+INSERT INTO `magcatalog_product_website` (`product_id`, `website_id`)
+VALUES
+	(1,1),
+	(2,1),
+	(3,1),
+	(4,1),
+	(5,1),
+	(6,1);
+
+/*!40000 ALTER TABLE `magcatalog_product_website` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcataloginventory_stock
@@ -2453,7 +3130,7 @@ CREATE TABLE `magcataloginventory_stock` (
   `stock_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Stock Id',
   `stock_name` varchar(255) DEFAULT NULL COMMENT 'Stock Name',
   PRIMARY KEY (`stock_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Cataloginventory Stock';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cataloginventory Stock';
 
 LOCK TABLES `magcataloginventory_stock` WRITE;
 /*!40000 ALTER TABLE `magcataloginventory_stock` DISABLE KEYS */;
@@ -2505,6 +3182,20 @@ CREATE TABLE `magcataloginventory_stock_item` (
   CONSTRAINT `FK_MAGCATINV_STOCK_ITEM_STOCK_ID_MAGCATINV_STOCK_STOCK_ID` FOREIGN KEY (`stock_id`) REFERENCES `magcataloginventory_stock` (`stock_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cataloginventory Stock Item';
 
+LOCK TABLES `magcataloginventory_stock_item` WRITE;
+/*!40000 ALTER TABLE `magcataloginventory_stock_item` DISABLE KEYS */;
+
+INSERT INTO `magcataloginventory_stock_item` (`item_id`, `product_id`, `stock_id`, `qty`, `min_qty`, `use_config_min_qty`, `is_qty_decimal`, `backorders`, `use_config_backorders`, `min_sale_qty`, `use_config_min_sale_qty`, `max_sale_qty`, `use_config_max_sale_qty`, `is_in_stock`, `low_stock_date`, `notify_stock_qty`, `use_config_notify_stock_qty`, `manage_stock`, `use_config_manage_stock`, `stock_status_changed_auto`, `use_config_qty_increments`, `qty_increments`, `use_config_enable_qty_inc`, `enable_qty_increments`, `is_decimal_divided`)
+VALUES
+	(1,1,1,30.0000,0.0000,1,0,0,1,1.0000,1,0.0000,1,1,NULL,NULL,1,0,1,0,1,0.0000,1,0,0),
+	(2,2,1,10.0000,0.0000,1,0,0,1,1.0000,1,0.0000,1,1,NULL,NULL,1,0,1,0,1,0.0000,1,0,0),
+	(3,3,1,3.0000,0.0000,1,0,0,1,1.0000,1,0.0000,1,1,NULL,NULL,1,0,1,0,1,0.0000,1,0,0),
+	(4,4,1,1.0000,0.0000,1,0,0,1,1.0000,1,0.0000,1,1,NULL,NULL,1,0,1,0,1,0.0000,1,0,0),
+	(5,5,1,12.0000,0.0000,1,0,0,1,1.0000,1,0.0000,1,1,NULL,NULL,1,0,1,0,1,0.0000,1,0,0),
+	(6,6,1,20.0000,0.0000,1,0,0,1,1.0000,1,0.0000,1,1,NULL,NULL,1,0,1,0,1,0.0000,1,0,0);
+
+/*!40000 ALTER TABLE `magcataloginventory_stock_item` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcataloginventory_stock_status
@@ -2526,6 +3217,20 @@ CREATE TABLE `magcataloginventory_stock_status` (
   CONSTRAINT `FK_MAGCATINV_STOCK_STS_WS_ID_MAGCORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `magcore_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cataloginventory Stock Status';
 
+LOCK TABLES `magcataloginventory_stock_status` WRITE;
+/*!40000 ALTER TABLE `magcataloginventory_stock_status` DISABLE KEYS */;
+
+INSERT INTO `magcataloginventory_stock_status` (`product_id`, `website_id`, `stock_id`, `qty`, `stock_status`)
+VALUES
+	(1,1,1,30.0000,1),
+	(2,1,1,10.0000,1),
+	(3,1,1,3.0000,1),
+	(4,1,1,1.0000,1),
+	(5,1,1,12.0000,1),
+	(6,1,1,20.0000,1);
+
+/*!40000 ALTER TABLE `magcataloginventory_stock_status` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcataloginventory_stock_status_idx
@@ -2544,6 +3249,15 @@ CREATE TABLE `magcataloginventory_stock_status_idx` (
   KEY `IDX_MAGCATALOGINVENTORY_STOCK_STATUS_IDX_WEBSITE_ID` (`website_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cataloginventory Stock Status Indexer Idx';
 
+LOCK TABLES `magcataloginventory_stock_status_idx` WRITE;
+/*!40000 ALTER TABLE `magcataloginventory_stock_status_idx` DISABLE KEYS */;
+
+INSERT INTO `magcataloginventory_stock_status_idx` (`product_id`, `website_id`, `stock_id`, `qty`, `stock_status`)
+VALUES
+	(1,1,1,0.0000,0);
+
+/*!40000 ALTER TABLE `magcataloginventory_stock_status_idx` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcataloginventory_stock_status_tmp
@@ -2733,6 +3447,20 @@ CREATE TABLE `magcatalogsearch_fulltext` (
   FULLTEXT KEY `FTI_MAGCATALOGSEARCH_FULLTEXT_DATA_INDEX` (`data_index`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Catalog search result table';
 
+LOCK TABLES `magcatalogsearch_fulltext` WRITE;
+/*!40000 ALTER TABLE `magcatalogsearch_fulltext` DISABLE KEYS */;
+
+INSERT INTO `magcatalogsearch_fulltext` (`fulltext_id`, `product_id`, `store_id`, `data_index`)
+VALUES
+	(2,1,1,'BK000001|None|A Song of Ice and Fire, 7 Volumes|George R.R. Martin’s A Song of Ice and Fire is the greatest fantasy epic of the modern age, and is now available in a collectible box set, including an exclusive fold-out map of Westeros. Now a major Sky Atlantic TV series from HBO, featuring a stellar cast. George R.R. Martin\'s A Song of Ice and Fire series has set the benchmark for contemporary epic fantasy. Labelled by Time magazine as one of the top 100 most influential people in the world, Martin has conjured a world as complex and vibrant as that of J.R.R. Tolkien’s, populated by a huge cast of fascinating, complex characters, and boasting a history that stretches back twelve thousand years. Three great storylines weave through the books, charting the civil war for control of the Seven Kingdoms; the defence of the towering Wall of ice in the uttermost north against the unearthly threat of the Others; and across the Narrow Sea the rise to power of Daenerys Targaryen and the last live dragons in the world. The HBO adaption of A Game of Thrones is currently airing worldwide and has already proved so popular that a second season has been commissioned. The box set includes: A GAME OF THRONES A CLASH OF KINGS A STORM OF SWORDS, 1: STEEL AND SNOW A STORM OF SWORDS, 2: BLOOD AND GOLD A FEAST FOR CROWS A DANCE WITH DRAGONS, 1: DREAMS AND DUST A DANCE WITH DRAGONS, 2: AFTER THE FEAST The dimension of the box set is 197mm x 130mm.|George R.R. Martin’s A Song of Ice and Fire is the greatest fantasy epic of the modern age, and is now available in a collectible box set, including an exclusive fold-out map of Westeros. Now a major Sky Atlantic TV series from HBO, featuring a stellar cast.|60|1'),
+	(4,2,1,'BK000002|None|Rendezvous With Rama|It is difficult to overestimate the effect of this ground breaking novel on present day science fiction - hardly anything I read today by writers like Iain Banks, Alastair Reynolds, Peter Hamilton et al escapes its brilliant influence. I read it when it first came out in the late seventies and was staggered by its vision. If many of its insights now seem trite, it is only because they have been re-used by other writers to such a degree that they have become almost commonplace. Like Niven\'s Ringworld, it has shaped modern day science fiction. That is why it is a classic.|A Classic Science Fiction novel from Arthur C Clarke|9.99|1'),
+	(6,3,1,'BK000003|None|The Man in the High Castle|A dazzling speculative novel of \'counterfactual history\' from one of America\'s most highly-regarded science fiction authors, Philip K. Dick\'s The Man in the High Castle includes an introduction by Eric Brown in Penguin Modern Classics. Philip K. Dick\'s acclaimed cult novel gives us a horrifying glimpse of an alternative world - one where the Allies have lost the Second World War. In this nightmare dystopia the Nazis have taken over New York, the Japanese control California and the African continent is virtually wiped out. In a neutral buffer zone in America that divides the world\'s new rival superpowers, lives the author of an underground bestseller. His book offers a new vision of reality - an alternative theory of world history in which the Axis powers were defeated - giving hope to the disenchanted. Does \'reality\' lie with him, or is his world just one among many others? Philip Kindred Dick (1928-82) was born in Chicago in 1928. His career as a science fiction writer comprised an early burst of short stories followed by a stream of novels, typically character studies incorporating androids, drugs, and hallucinations. His best works are generally agreed to be The Man in the High Castle and Do Androids Dream of Electric Sheep?, the inspiration for the movie Blade Runner. If you enjoyed The Man in the High Castle, you might like Yevgeny Zamyatin\'s We, also available in Penguin Classics. \'The most brilliant science fiction mind on any planet\' Rolling Stone \'Dick\'s finest book, and one of the very best science fiction novels ever published\' Eric Brown|Philip K. Dick\'s acclaimed cult novel gives us a horrifying glimpse of an alternative world - one where the Allies have lost the Second World War.|9.99|1'),
+	(8,4,1,'BK000004|None|Children of Dune|The third installment of Frank Herbert\'s classic scifi series.|The third installment of Frank Herbert\'s classic scifi series.|3.99|1'),
+	(10,5,1,'BK000005|None|The Moons of Jupiter|Another Isaac Asimov classic|Another Isaac Asimov classic|3.99|1'),
+	(12,6,1,'BK000006|None|The Silmarillion|The history of middle earth, a very heavy read indeed.|The history of middle earth, a very heavy read indeed.|8.99|1');
+
+/*!40000 ALTER TABLE `magcatalogsearch_fulltext` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcatalogsearch_query
@@ -2827,7 +3555,7 @@ CREATE TABLE `magcms_block` (
   `update_time` timestamp NULL DEFAULT NULL COMMENT 'Block Modification Time',
   `is_active` smallint(6) NOT NULL DEFAULT '1' COMMENT 'Is Block Active',
   PRIMARY KEY (`block_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='CMS Block Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Block Table';
 
 LOCK TABLES `magcms_block` WRITE;
 /*!40000 ALTER TABLE `magcms_block` DISABLE KEYS */;
@@ -2840,7 +3568,10 @@ VALUES
 	(4,'Footer Company','footer-company','<h4>About Book Store Theme</h4>\r\n       <p>Book Store Theme is a Magento Responsive Theme built on\r\n       Bootstrap 3.0. It is compatible with the latest Magento version\r\n       1.3. This theme is responsive, so it adapt with the screen. Try to\r\n       open this page with your smartphone.</p>\r\n       <a href=\"http://www.themeforest.net/\">Buy now for $80 »</a>','2015-06-10 11:11:23','2015-06-10 11:14:47',1),
 	(5,'CMS links','footer-cmslinks','<div class=\"col-md-3\">\r\n    <h4>Column Name</h4>\r\n    <ul>\r\n        <li><a href=\"{{store_url=\'\'}}about-magento-demo-store\">About Us</a></li>\r\n        <li><a href=\"{{store_url=\'\'}}customer-service\">Customer Service</a></li>\r\n        <li class=\"last privacy\"><a href=\"{{store_url=\'\'}}privacy-policy-cookie-restriction-mode\">Privacy Policy</a></li>\r\n    </ul>\r\n</div>\r\n<div class=\"col-md-3\">\r\n    <h4>Column Name</h4>\r\n    <ul>\r\n        <li><a href=\"{{store_url=\'\'}}about-magento-demo-store\">About Us</a></li>\r\n        <li><a href=\"{{store_url=\'\'}}customer-service\">Customer Service</a></li>\r\n        <li class=\"last privacy\"><a href=\"{{store_url=\'\'}}privacy-policy-cookie-restriction-mode\">Privacy Policy</a></li>\r\n    </ul>\r\n</div>\r\n<div class=\"col-md-3\">\r\n    <h4>Column Name</h4>\r\n    <ul>\r\n        <li><a href=\"{{store_url=\'\'}}about-magento-demo-store\">About Us</a></li>\r\n        <li><a href=\"{{store_url=\'\'}}customer-service\">Customer Service</a></li>\r\n        <li class=\"last privacy\"><a href=\"{{store_url=\'\'}}privacy-policy-cookie-restriction-mode\">Privacy Policy</a></li>\r\n    </ul>\r\n</div>\r\n<div class=\"col-md-3\">\r\n    <h4>Column Name</h4>\r\n    <ul>\r\n        <li><a href=\"{{store_url=\'\'}}about-magento-demo-store\">About Us</a></li>\r\n        <li><a href=\"{{store_url=\'\'}}customer-service\">Customer Service</a></li>\r\n        <li class=\"last privacy\"><a href=\"{{store_url=\'\'}}privacy-policy-cookie-restriction-mode\">Privacy Policy</a></li>\r\n    </ul>\r\n</div>','2015-06-10 11:17:01','2015-06-10 11:20:17',1),
 	(6,'Footer Social','footer-social','<ul class=\"list-inline footer-social\">\r\n       <li><a class=\"ico-facebook\" href=\"#\"><span></span>Facebook</a></li>\r\n       <li><a class=\"ico-twitter\" href=\"#\"><span></span>Twitter</a></li>\r\n       <li><a class=\"ico-google\" href=\"#\"><span></span>Google+</a></li>\r\n</ul>','2015-06-10 11:21:27','2015-06-10 11:21:27',1),
-	(7,'Footer Cards','footer-cards','<a href=\"#\">\r\n       <span style=\"font-size:12px; padding-right:10px;\">Secure\r\n       Payments</span>\r\n       <img src=\"{{skin_url=\'images/cards.png\'}}\">\r\n       </a>','2015-06-10 11:22:27','2015-06-10 11:22:27',1);
+	(7,'Footer Cards','footer-cards','<a href=\"#\">\r\n       <span style=\"font-size:12px; padding-right:10px;\">Secure\r\n       Payments</span>\r\n       <img src=\"{{skin_url=\'images/cards.png\'}}\">\r\n       </a>','2015-06-10 11:22:27','2015-06-10 11:22:27',1),
+	(8,'Home Block Full Width','home-fullwidth','<div class=\"row\">\r\n     <div class=\"col-md-8\">\r\n       {{block type=\"cms/block\" block_id=\"slider-home\" template=\"cms/content.phtml\"}}\r\n</div>\r\n     <div class=\"col-md-4\">\r\n       {{block type=\"cms/block\" block_id=\"home-right-banner\" template=\"cms/content.phtml\"}}\r\n     </div>\r\n</div>','2015-06-10 13:54:57','2015-06-11 14:07:12',1),
+	(9,'Home Page Carousel','slider-home','\r\n<div data-ride=\"carousel\" class=\"carousel slide\" id=\"slider-home\">\r\n    <ol class=\"carousel-indicators\">\r\n        <li data-slide-to=\"0\" data-target=\"#slider-home\"></li>\r\n        <li data-slide-to=\"1\" data-target=\"#slider-home\" class=\"active\"></li>\r\n        <li data-slide-to=\"2\" data-target=\"#slider-home\" class=\"\"></li>\r\n    </ol>\r\n    <div class=\"carousel-inner\">\r\n        <div class=\"item\">\r\n            <img src=\"{{skin_url=\'images/slide1.png\'}}\" alt=\"Slide 1 Alt Text\">\r\n        </div>\r\n        <div class=\"item active\">\r\n            <img src=\"{{skin_url=\'images/slide1.png\'}}\" alt=\"Slide 2 Alt Text\">\r\n        </div>\r\n        <div class=\"item\">\r\n            <img src=\"{{skin_url=\'images/slide1.png\'}}\" alt=\"Slide 3 Alt Text\">\r\n        </div>\r\n    </div>\r\n    <a data-slide=\"prev\" href=\"#slider-home\" class=\"left carousel-control\">\r\n        <span class=\"glyphicon glyphicon-chevron-left\"></span>\r\n    </a>\r\n    <a data-slide=\"next\" href=\"#slider-home\" class=\"right carousel-control\">\r\n        <span class=\"glyphicon glyphicon-chevron-right\"></span>\r\n    </a>\r\n</div>','2015-06-11 09:57:57','2015-06-11 09:57:57',1),
+	(10,'Home Right Banner','home-right-banner','<div id=\"banner-home\">\r\n     <div class=\"bg-orange\">\r\n       <h3>Lorem ipsum dolor sit amet</h3>\r\n       <p>Browse now more than 500 ebooks</p>\r\n     </div>\r\n     <div class=\"bg-cyan\">\r\n       <h3>Lorem ipsum dolor sit amet</h3>\r\n       <p>Browse now more than 500 ebooks</p>\r\n</div>\r\n     <div class=\"bg-darkgrey\">\r\n       <h3>Lorem ipsum dolor sit amet</h3>\r\n       <p>Browse now more than 500 ebooks</p>\r\n     </div>\r\n   </div>\r\n','2015-06-11 10:01:17','2015-06-11 14:05:54',1);
 
 /*!40000 ALTER TABLE `magcms_block` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2871,7 +3602,10 @@ VALUES
 	(4,1),
 	(5,1),
 	(6,1),
-	(7,1);
+	(7,1),
+	(8,1),
+	(9,1),
+	(10,1);
 
 /*!40000 ALTER TABLE `magcms_block_store` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2903,7 +3637,7 @@ CREATE TABLE `magcms_page` (
   `custom_theme_to` date DEFAULT NULL COMMENT 'Page Custom Theme Active To Date',
   PRIMARY KEY (`page_id`),
   KEY `IDX_MAGCMS_PAGE_IDENTIFIER` (`identifier`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='CMS Page Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Page Table';
 
 LOCK TABLES `magcms_page` WRITE;
 /*!40000 ALTER TABLE `magcms_page` DISABLE KEYS */;
@@ -2911,7 +3645,7 @@ LOCK TABLES `magcms_page` WRITE;
 INSERT INTO `magcms_page` (`page_id`, `title`, `root_template`, `meta_keywords`, `meta_description`, `identifier`, `content_heading`, `content`, `creation_time`, `update_time`, `is_active`, `sort_order`, `layout_update_xml`, `custom_theme`, `custom_root_template`, `custom_layout_update_xml`, `custom_theme_from`, `custom_theme_to`)
 VALUES
 	(1,'404 Not Found 1','two_columns_right','Page keywords','Page description','no-route',NULL,'\n<div class=\"page-title\"><h1>Whoops, our bad...</h1></div>\n<dl>\n    <dt>The page you requested was not found, and we have a fine guess why.</dt>\n    <dd>\n        <ul class=\"disc\">\n            <li>If you typed the URL directly, please make sure the spelling is correct.</li>\n            <li>If you clicked on a link to get here, the link is outdated.</li>\n        </ul>\n    </dd>\n</dl>\n<dl>\n    <dt>What can you do?</dt>\n    <dd>Have no fear, help is near! There are many ways you can get back on track with Magento Store.</dd>\n    <dd>\n        <ul class=\"disc\">\n            <li><a href=\"#\" onclick=\"history.go(-1); return false;\">Go back</a> to the previous page.</li>\n            <li>Use the search bar at the top of the page to search for your products.</li>\n            <li>Follow these links to get you back on track!<br /><a href=\"{{store url=\"\"}}\">Store Home</a>\n            <span class=\"separator\">|</span> <a href=\"{{store url=\"customer/account\"}}\">My Account</a></li>\n        </ul>\n    </dd>\n</dl>\n','2015-05-20 13:58:58','2015-05-20 13:58:58',1,0,NULL,NULL,NULL,NULL,NULL,NULL),
-	(2,'Home page','two_columns_right',NULL,NULL,'home',NULL,'<div class=\"page-title\"><h2>Home Page</h2></div>','2015-05-20 13:58:59','2015-05-20 13:59:32',1,0,'<!--<reference name=\"content\">\n        <block type=\"catalog/product_new\" name=\"home.catalog.product.new\" alias=\"product_new\" template=\"catalog/product/new.phtml\" after=\"cms_page\">\n            <action method=\"addPriceBlockType\">\n                <type>bundle</type>\n                <block>bundle/catalog_product_price</block>\n                <template>bundle/catalog/product/price.phtml</template>\n            </action>\n        </block>\n        <block type=\"reports/product_viewed\" name=\"home.reports.product.viewed\" alias=\"product_viewed\" template=\"reports/home_product_viewed.phtml\" after=\"product_new\">\n            <action method=\"addPriceBlockType\">\n                <type>bundle</type>\n                <block>bundle/catalog_product_price</block>\n                <template>bundle/catalog/product/price.phtml</template>\n            </action>\n        </block>\n        <block type=\"reports/product_compared\" name=\"home.reports.product.compared\" template=\"reports/home_product_compared.phtml\" after=\"product_viewed\">\n            <action method=\"addPriceBlockType\">\n                <type>bundle</type>\n                <block>bundle/catalog_product_price</block>\n                <template>bundle/catalog/product/price.phtml</template>\n            </action>\n        </block>\n    </reference>\n    <reference name=\"right\">\n        <action method=\"unsetChild\"><alias>right.reports.product.viewed</alias></action>\n        <action method=\"unsetChild\"><alias>right.reports.product.compared</alias></action>\n    </reference>-->',NULL,NULL,NULL,NULL,NULL),
+	(2,'Home page','two_columns_left',NULL,NULL,'home',NULL,'<div class=\"page-title\"><h2>Incredible Placeholder Text</h2></div>\r\n<p class=\"lead\">\r\nZombie ipsum reversus ab viral inferno</p>\r\n<p>Nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.\r\n</p>\r\n<br />\r\n\r\n{{block type=\"catalog/product_list\" category_id=\"3\"  template=\"catalog/product/list-home.phtml\"}}\r\n\r\n<br />\r\n<p>\r\nZombie ipsum reversus ab viral inferno nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.\r\n</p>','2015-05-20 13:58:59','2015-06-12 09:30:14',1,0,'<!--<reference name=\"content\">\r\n        <block type=\"catalog/product_new\" name=\"home.catalog.product.new\" alias=\"product_new\" template=\"catalog/product/new.phtml\" after=\"cms_page\">\r\n            <action method=\"addPriceBlockType\">\r\n                <type>bundle</type>\r\n                <block>bundle/catalog_product_price</block>\r\n                <template>bundle/catalog/product/price.phtml</template>\r\n            </action>\r\n        </block>\r\n        <block type=\"reports/product_viewed\" name=\"home.reports.product.viewed\" alias=\"product_viewed\" template=\"reports/home_product_viewed.phtml\" after=\"product_new\">\r\n            <action method=\"addPriceBlockType\">\r\n                <type>bundle</type>\r\n                <block>bundle/catalog_product_price</block>\r\n                <template>bundle/catalog/product/price.phtml</template>\r\n            </action>\r\n        </block>\r\n        <block type=\"reports/product_compared\" name=\"home.reports.product.compared\" template=\"reports/home_product_compared.phtml\" after=\"product_viewed\">\r\n            <action method=\"addPriceBlockType\">\r\n                <type>bundle</type>\r\n                <block>bundle/catalog_product_price</block>\r\n                <template>bundle/catalog/product/price.phtml</template>\r\n            </action>\r\n        </block>\r\n    </reference>\r\n    <reference name=\"right\">\r\n        <action method=\"unsetChild\"><alias>right.reports.product.viewed</alias></action>\r\n        <action method=\"unsetChild\"><alias>right.reports.product.compared</alias></action>\r\n    </reference>-->',NULL,NULL,NULL,NULL,NULL),
 	(3,'About Us','two_columns_right',NULL,NULL,'about-magento-demo-store',NULL,'<div class=\"page-title\">\r\n<h1>About Magento Store</h1>\r\n</div>\r\n<div class=\"col3-set\">\r\n<div class=\"col-1\">\r\n<p style=\"line-height: 1.2em;\"><small>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.</small></p>\r\n<p style=\"color: #888; font: 1.2em/1.4em georgia, serif;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta.</p>\r\n</div>\r\n<div class=\"col-2\">\r\n<p><strong style=\"color: #de036f;\">We are based in {{CustomVar code=\"store_city\"}}<br /></strong></p>\r\n<p>Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</p>\r\n<p>Maecenas ullamcorper, odio vel tempus egestas, dui orci faucibus orci, sit amet aliquet lectus dolor et quam. Pellentesque consequat luctus purus. Nunc et risus. Etiam a nibh. Phasellus dignissim metus eget nisi. Vestibulum sapien dolor, aliquet nec, porta ac, malesuada a, libero. Praesent feugiat purus eget est. Nulla facilisi. Vestibulum tincidunt sapien eu velit. Mauris purus. Maecenas eget mauris eu orci accumsan feugiat. Pellentesque eget velit. Nunc tincidunt.</p>\r\n</div>\r\n<div class=\"col-3\">\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper</p>\r\n<p><strong style=\"color: #de036f;\">Maecenas ullamcorper, odio vel tempus egestas, dui orci faucibus orci, sit amet aliquet lectus dolor et quam. Pellentesque consequat luctus purus.</strong></p>\r\n<p>Nunc et risus. Etiam a nibh. Phasellus dignissim metus eget nisi.</p>\r\n<div class=\"divider\">&nbsp;</div>\r\n<p>To all of you, from all of us at Magento Store - Thank you and Happy eCommerce!</p>\r\n<p style=\"line-height: 1.2em;\"><strong style=\"font: italic 2em Georgia, serif;\">Del Boy</strong><br /> <small>Some important guy</small></p>\r\n</div>\r\n</div>','2015-05-20 13:58:59','2015-06-04 10:26:09',1,0,NULL,NULL,NULL,NULL,NULL,NULL),
 	(4,'Customer Service','three_columns',NULL,NULL,'customer-service',NULL,'<div class=\"page-title\">\n<h1>Customer Service</h1>\n</div>\n<ul class=\"disc\">\n<li><a href=\"#answer1\">Shipping &amp; Delivery</a></li>\n<li><a href=\"#answer2\">Privacy &amp; Security</a></li>\n<li><a href=\"#answer3\">Returns &amp; Replacements</a></li>\n<li><a href=\"#answer4\">Ordering</a></li>\n<li><a href=\"#answer5\">Payment, Pricing &amp; Promotions</a></li>\n<li><a href=\"#answer6\">Viewing Orders</a></li>\n<li><a href=\"#answer7\">Updating Account Information</a></li>\n</ul>\n<dl>\n<dt id=\"answer1\">Shipping &amp; Delivery</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer2\">Privacy &amp; Security</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer3\">Returns &amp; Replacements</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer4\">Ordering</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer5\">Payment, Pricing &amp; Promotions</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer6\">Viewing Orders</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\n Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\n justo.</dd>\n<dt id=\"answer7\">Updating Account Information</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\n Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\n Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\n faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\n Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\n justo.</dd>\n</dl>','2015-05-20 13:59:00','2015-05-20 13:59:00',1,0,NULL,NULL,NULL,NULL,NULL,NULL),
 	(5,'Enable Cookies','one_column',NULL,NULL,'enable-cookies',NULL,'<div class=\"std\">\n    <ul class=\"messages\">\n        <li class=\"notice-msg\">\n            <ul>\n                <li>Please enable cookies in your web browser to continue.</li>\n            </ul>\n        </li>\n    </ul>\n    <div class=\"page-title\">\n        <h1><a name=\"top\"></a>What are Cookies?</h1>\n    </div>\n    <p>Cookies are short pieces of data that are sent to your computer when you visit a website.\n    On later visits, this data is then returned to that website. Cookies allow us to recognize you automatically\n    whenever you visit our site so that we can personalize your experience and provide you with better service.\n    We also use cookies (and similar browser data, such as Flash cookies) for fraud prevention and other purposes.\n     If your web browser is set to refuse cookies from our website, you will not be able to complete a purchase\n     or take advantage of certain features of our website, such as storing items in your Shopping Cart or\n     receiving personalized recommendations. As a result, we strongly encourage you to configure your web\n     browser to accept cookies from our website.</p>\n    <h2 class=\"subtitle\">Enabling Cookies</h2>\n    <ul class=\"disc\">\n        <li><a href=\"#ie7\">Internet Explorer 7.x</a></li>\n        <li><a href=\"#ie6\">Internet Explorer 6.x</a></li>\n        <li><a href=\"#firefox\">Mozilla/Firefox</a></li>\n        <li><a href=\"#opera\">Opera 7.x</a></li>\n    </ul>\n    <h3><a name=\"ie7\"></a>Internet Explorer 7.x</h3>\n    <ol>\n        <li>\n            <p>Start Internet Explorer</p>\n        </li>\n        <li>\n            <p>Under the <strong>Tools</strong> menu, click <strong>Internet Options</strong></p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-1.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click the <strong>Privacy</strong> tab</p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-2.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click the <strong>Advanced</strong> button</p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-3.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Put a check mark in the box for <strong>Override Automatic Cookie Handling</strong>,\n            put another check mark in the <strong>Always accept session cookies </strong>box</p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-4.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click <strong>OK</strong></p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-5.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click <strong>OK</strong></p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-6.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Restart Internet Explore</p>\n        </li>\n    </ol>\n    <p class=\"a-top\"><a href=\"#top\">Back to Top</a></p>\n    <h3><a name=\"ie6\"></a>Internet Explorer 6.x</h3>\n    <ol>\n        <li>\n            <p>Select <strong>Internet Options</strong> from the Tools menu</p>\n            <p><img src=\"{{skin url=\"images/cookies/ie6-1.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click on the <strong>Privacy</strong> tab</p>\n        </li>\n        <li>\n            <p>Click the <strong>Default</strong> button (or manually slide the bar down to <strong>Medium</strong>)\n            under <strong>Settings</strong>. Click <strong>OK</strong></p>\n            <p><img src=\"{{skin url=\"images/cookies/ie6-2.gif\"}}\" alt=\"\" /></p>\n        </li>\n    </ol>\n    <p class=\"a-top\"><a href=\"#top\">Back to Top</a></p>\n    <h3><a name=\"firefox\"></a>Mozilla/Firefox</h3>\n    <ol>\n        <li>\n            <p>Click on the <strong>Tools</strong>-menu in Mozilla</p>\n        </li>\n        <li>\n            <p>Click on the <strong>Options...</strong> item in the menu - a new window open</p>\n        </li>\n        <li>\n            <p>Click on the <strong>Privacy</strong> selection in the left part of the window. (See image below)</p>\n            <p><img src=\"{{skin url=\"images/cookies/firefox.png\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Expand the <strong>Cookies</strong> section</p>\n        </li>\n        <li>\n            <p>Check the <strong>Enable cookies</strong> and <strong>Accept cookies normally</strong> checkboxes</p>\n        </li>\n        <li>\n            <p>Save changes by clicking <strong>Ok</strong>.</p>\n        </li>\n    </ol>\n    <p class=\"a-top\"><a href=\"#top\">Back to Top</a></p>\n    <h3><a name=\"opera\"></a>Opera 7.x</h3>\n    <ol>\n        <li>\n            <p>Click on the <strong>Tools</strong> menu in Opera</p>\n        </li>\n        <li>\n            <p>Click on the <strong>Preferences...</strong> item in the menu - a new window open</p>\n        </li>\n        <li>\n            <p>Click on the <strong>Privacy</strong> selection near the bottom left of the window. (See image below)</p>\n            <p><img src=\"{{skin url=\"images/cookies/opera.png\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>The <strong>Enable cookies</strong> checkbox must be checked, and <strong>Accept all cookies</strong>\n            should be selected in the &quot;<strong>Normal cookies</strong>&quot; drop-down</p>\n        </li>\n        <li>\n            <p>Save changes by clicking <strong>Ok</strong></p>\n        </li>\n    </ol>\n    <p class=\"a-top\"><a href=\"#top\">Back to Top</a></p>\n</div>\n','2015-05-20 13:59:00','2015-05-20 13:59:00',1,0,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -2941,10 +3675,10 @@ LOCK TABLES `magcms_page_store` WRITE;
 INSERT INTO `magcms_page_store` (`page_id`, `store_id`)
 VALUES
 	(1,0),
-	(2,0),
 	(4,0),
 	(5,0),
 	(6,0),
+	(2,1),
 	(3,1);
 
 /*!40000 ALTER TABLE `magcms_page_store` ENABLE KEYS */;
@@ -3024,7 +3758,7 @@ CREATE TABLE `magcore_config_data` (
   `value` text COMMENT 'Config Value',
   PRIMARY KEY (`config_id`),
   UNIQUE KEY `UNQ_MAGCORE_CONFIG_DATA_SCOPE_SCOPE_ID_PATH` (`scope`,`scope_id`,`path`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COMMENT='Config Data';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Config Data';
 
 LOCK TABLES `magcore_config_data` WRITE;
 /*!40000 ALTER TABLE `magcore_config_data` DISABLE KEYS */;
@@ -3120,7 +3854,20 @@ VALUES
 	(87,'default',0,'design/email/footer','design_email_footer'),
 	(88,'default',0,'design/email/css_non_inline','email-non-inline.css'),
 	(89,'default',0,'cms/wysiwyg/enabled','disabled'),
-	(90,'default',0,'cms/wysiwyg/use_static_urls_in_catalog','0');
+	(90,'default',0,'cms/wysiwyg/use_static_urls_in_catalog','0'),
+	(91,'stores',1,'dev/debug/template_hints','0'),
+	(92,'default',0,'currency/options/base','GBP'),
+	(93,'default',0,'currency/options/default','GBP'),
+	(94,'default',0,'currency/options/allow','GBP,EUR,USD'),
+	(95,'default',0,'currency/webservicex/timeout','100'),
+	(96,'default',0,'currency/import/enabled','0'),
+	(97,'default',0,'currency/import/service','webservicex'),
+	(98,'default',0,'crontab/jobs/currency_rates_update/schedule/cron_expr','0 0 * * *'),
+	(99,'default',0,'currency/import/time','00,00,00'),
+	(100,'default',0,'currency/import/frequency','D'),
+	(101,'default',0,'currency/import/error_email',NULL),
+	(102,'default',0,'currency/import/error_email_identity','general'),
+	(103,'default',0,'currency/import/error_email_template','currency_import_error_email_template');
 
 /*!40000 ALTER TABLE `magcore_config_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3206,7 +3953,7 @@ CREATE TABLE `magcore_flag` (
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Date of Last Flag Update',
   PRIMARY KEY (`flag_id`),
   KEY `IDX_MAGCORE_FLAG_LAST_UPDATE` (`last_update`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Flag';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Flag';
 
 LOCK TABLES `magcore_flag` WRITE;
 /*!40000 ALTER TABLE `magcore_flag` DISABLE KEYS */;
@@ -3365,7 +4112,7 @@ CREATE TABLE `magcore_store` (
   KEY `IDX_MAGCORE_STORE_GROUP_ID` (`group_id`),
   CONSTRAINT `FK_MAGCORE_STORE_GROUP_ID_MAGCORE_STORE_GROUP_GROUP_ID` FOREIGN KEY (`group_id`) REFERENCES `magcore_store_group` (`group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGCORE_STORE_WEBSITE_ID_MAGCORE_WEBSITE_WEBSITE_ID` FOREIGN KEY (`website_id`) REFERENCES `magcore_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Stores';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores';
 
 LOCK TABLES `magcore_store` WRITE;
 /*!40000 ALTER TABLE `magcore_store` DISABLE KEYS */;
@@ -3394,7 +4141,7 @@ CREATE TABLE `magcore_store_group` (
   KEY `IDX_MAGCORE_STORE_GROUP_WEBSITE_ID` (`website_id`),
   KEY `IDX_MAGCORE_STORE_GROUP_DEFAULT_STORE_ID` (`default_store_id`),
   CONSTRAINT `FK_MAGCORE_STORE_GROUP_WEBSITE_ID_MAGCORE_WEBSITE_WEBSITE_ID` FOREIGN KEY (`website_id`) REFERENCES `magcore_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Store Groups';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Store Groups';
 
 LOCK TABLES `magcore_store_group` WRITE;
 /*!40000 ALTER TABLE `magcore_store_group` DISABLE KEYS */;
@@ -3457,6 +4204,42 @@ CREATE TABLE `magcore_url_rewrite` (
   CONSTRAINT `FK_MAGCORE_URL_REWRITE_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Url Rewrites';
 
+LOCK TABLES `magcore_url_rewrite` WRITE;
+/*!40000 ALTER TABLE `magcore_url_rewrite` DISABLE KEYS */;
+
+INSERT INTO `magcore_url_rewrite` (`url_rewrite_id`, `store_id`, `id_path`, `request_path`, `target_path`, `is_system`, `options`, `description`, `category_id`, `product_id`)
+VALUES
+	(1,1,'category/3','books.html','catalog/category/view/id/3',1,NULL,NULL,3,NULL),
+	(2,1,'category/4','music.html','catalog/category/view/id/4',1,NULL,NULL,4,NULL),
+	(3,1,'category/5','video-games.html','catalog/category/view/id/5',1,NULL,NULL,5,NULL),
+	(4,1,'category/6','video-games/pc.html','catalog/category/view/id/6',1,NULL,NULL,6,NULL),
+	(5,1,'category/7','video-games/mac-os-x.html','catalog/category/view/id/7',1,NULL,NULL,7,NULL),
+	(6,1,'category/8','video-games/megadrive.html','catalog/category/view/id/8',1,NULL,NULL,8,NULL),
+	(7,1,'category/9','books/fiction.html','catalog/category/view/id/9',1,NULL,NULL,9,NULL),
+	(8,1,'category/10','books/reference.html','catalog/category/view/id/10',1,NULL,NULL,10,NULL),
+	(9,1,'category/11','music/awesome.html','catalog/category/view/id/11',1,NULL,NULL,11,NULL),
+	(10,1,'category/12','music/crap.html','catalog/category/view/id/12',1,NULL,NULL,12,NULL),
+	(11,1,'product/1','a-song-of-ice-and-fire.html','catalog/product/view/id/1',1,NULL,NULL,NULL,1),
+	(12,1,'product/1/3','books/a-song-of-ice-and-fire.html','catalog/product/view/id/1/category/3',1,NULL,NULL,3,1),
+	(13,1,'product/1/9','books/fiction/a-song-of-ice-and-fire.html','catalog/product/view/id/1/category/9',1,NULL,NULL,9,1),
+	(28,1,'product/2','rendezvous-with-rama.html','catalog/product/view/id/2',1,NULL,NULL,NULL,2),
+	(29,1,'product/2/3','books/rendezvous-with-rama.html','catalog/product/view/id/2/category/3',1,NULL,NULL,3,2),
+	(30,1,'product/2/9','books/fiction/rendezvous-with-rama.html','catalog/product/view/id/2/category/9',1,NULL,NULL,9,2),
+	(32,1,'product/3','the-man-in-the-high-castle.html','catalog/product/view/id/3',1,NULL,NULL,NULL,3),
+	(33,1,'product/3/3','books/the-man-in-the-high-castle.html','catalog/product/view/id/3/category/3',1,NULL,NULL,3,3),
+	(34,1,'product/3/9','books/fiction/the-man-in-the-high-castle.html','catalog/product/view/id/3/category/9',1,NULL,NULL,9,3),
+	(36,1,'product/4','children-of-dune.html','catalog/product/view/id/4',1,NULL,NULL,NULL,4),
+	(37,1,'product/4/3','books/children-of-dune.html','catalog/product/view/id/4/category/3',1,NULL,NULL,3,4),
+	(38,1,'product/4/9','books/fiction/children-of-dune.html','catalog/product/view/id/4/category/9',1,NULL,NULL,9,4),
+	(40,1,'product/5','the-moons-of-jupiter.html','catalog/product/view/id/5',1,NULL,NULL,NULL,5),
+	(41,1,'product/5/3','books/the-moons-of-jupiter.html','catalog/product/view/id/5/category/3',1,NULL,NULL,3,5),
+	(42,1,'product/5/9','books/fiction/the-moons-of-jupiter.html','catalog/product/view/id/5/category/9',1,NULL,NULL,9,5),
+	(44,1,'product/6','the-silmarillion.html','catalog/product/view/id/6',1,NULL,NULL,NULL,6),
+	(45,1,'product/6/3','books/the-silmarillion.html','catalog/product/view/id/6/category/3',1,NULL,NULL,3,6),
+	(46,1,'product/6/9','books/fiction/the-silmarillion.html','catalog/product/view/id/6/category/9',1,NULL,NULL,9,6);
+
+/*!40000 ALTER TABLE `magcore_url_rewrite` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magcore_variable
@@ -3470,7 +4253,7 @@ CREATE TABLE `magcore_variable` (
   `name` varchar(255) DEFAULT NULL COMMENT 'Variable Name',
   PRIMARY KEY (`variable_id`),
   UNIQUE KEY `UNQ_MAGCORE_VARIABLE_CODE` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Variables';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Variables';
 
 LOCK TABLES `magcore_variable` WRITE;
 /*!40000 ALTER TABLE `magcore_variable` DISABLE KEYS */;
@@ -3500,7 +4283,7 @@ CREATE TABLE `magcore_variable_value` (
   KEY `IDX_MAGCORE_VARIABLE_VALUE_STORE_ID` (`store_id`),
   CONSTRAINT `FK_MAGCORE_VARIABLE_VALUE_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGCORE_VARIABLE_VAL_VARIABLE_ID_MAGCORE_VARIABLE_VARIABLE_ID` FOREIGN KEY (`variable_id`) REFERENCES `magcore_variable` (`variable_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Variable Value';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Variable Value';
 
 LOCK TABLES `magcore_variable_value` WRITE;
 /*!40000 ALTER TABLE `magcore_variable_value` DISABLE KEYS */;
@@ -3529,7 +4312,7 @@ CREATE TABLE `magcore_website` (
   UNIQUE KEY `UNQ_MAGCORE_WEBSITE_CODE` (`code`),
   KEY `IDX_MAGCORE_WEBSITE_SORT_ORDER` (`sort_order`),
   KEY `IDX_MAGCORE_WEBSITE_DEFAULT_GROUP_ID` (`default_group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Websites';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Websites';
 
 LOCK TABLES `magcore_website` WRITE;
 /*!40000 ALTER TABLE `magcore_website` DISABLE KEYS */;
@@ -4149,7 +4932,7 @@ CREATE TABLE `magcustomer_group` (
   `customer_group_code` varchar(32) NOT NULL COMMENT 'Customer Group Code',
   `tax_class_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Tax Class Id',
   PRIMARY KEY (`customer_group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Customer Group';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Customer Group';
 
 LOCK TABLES `magcustomer_group` WRITE;
 /*!40000 ALTER TABLE `magcustomer_group` DISABLE KEYS */;
@@ -4256,7 +5039,7 @@ CREATE TABLE `magdataflow_profile` (
   `store_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'Store Id',
   `data_transfer` varchar(11) DEFAULT NULL COMMENT 'Data Transfer',
   PRIMARY KEY (`profile_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Dataflow Profile';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Dataflow Profile';
 
 LOCK TABLES `magdataflow_profile` WRITE;
 /*!40000 ALTER TABLE `magdataflow_profile` DISABLE KEYS */;
@@ -4288,7 +5071,7 @@ CREATE TABLE `magdataflow_profile_history` (
   PRIMARY KEY (`history_id`),
   KEY `IDX_MAGDATAFLOW_PROFILE_HISTORY_PROFILE_ID` (`profile_id`),
   CONSTRAINT `FK_8747D2406DA3BA8440FCC5E465BB807F` FOREIGN KEY (`profile_id`) REFERENCES `magdataflow_profile` (`profile_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Dataflow Profile History';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Dataflow Profile History';
 
 LOCK TABLES `magdataflow_profile_history` WRITE;
 /*!40000 ALTER TABLE `magdataflow_profile_history` DISABLE KEYS */;
@@ -4638,7 +5421,7 @@ CREATE TABLE `magdirectory_country_region` (
   `default_name` varchar(255) DEFAULT NULL COMMENT 'Region Name',
   PRIMARY KEY (`region_id`),
   KEY `IDX_MAGDIRECTORY_COUNTRY_REGION_COUNTRY_ID` (`country_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=485 DEFAULT CHARSET=utf8 COMMENT='Directory Country Region';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Directory Country Region';
 
 LOCK TABLES `magdirectory_country_region` WRITE;
 /*!40000 ALTER TABLE `magdirectory_country_region` DISABLE KEYS */;
@@ -5857,7 +6640,7 @@ CREATE TABLE `mageav_attribute` (
   UNIQUE KEY `UNQ_MAGEAV_ATTRIBUTE_ENTITY_TYPE_ID_ATTRIBUTE_CODE` (`entity_type_id`,`attribute_code`),
   KEY `IDX_MAGEAV_ATTRIBUTE_ENTITY_TYPE_ID` (`entity_type_id`),
   CONSTRAINT `FK_MAGEAV_ATTR_ENTT_TYPE_ID_MAGEAV_ENTT_TYPE_ENTT_TYPE_ID` FOREIGN KEY (`entity_type_id`) REFERENCES `mageav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8 COMMENT='Eav Attribute';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Attribute';
 
 LOCK TABLES `mageav_attribute` WRITE;
 /*!40000 ALTER TABLE `mageav_attribute` DISABLE KEYS */;
@@ -6015,7 +6798,7 @@ CREATE TABLE `mageav_attribute_group` (
   UNIQUE KEY `UNQ_MAGEAV_ATTRIBUTE_GROUP_ATTRIBUTE_SET_ID_ATTRIBUTE_GROUP_NAME` (`attribute_set_id`,`attribute_group_name`),
   KEY `IDX_MAGEAV_ATTRIBUTE_GROUP_ATTRIBUTE_SET_ID_SORT_ORDER` (`attribute_set_id`,`sort_order`),
   CONSTRAINT `FK_MAGEAV_ATTR_GROUP_ATTR_SET_ID_MAGEAV_ATTR_SET_ATTR_SET_ID` FOREIGN KEY (`attribute_set_id`) REFERENCES `mageav_attribute_set` (`attribute_set_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Group';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Group';
 
 LOCK TABLES `mageav_attribute_group` WRITE;
 /*!40000 ALTER TABLE `mageav_attribute_group` DISABLE KEYS */;
@@ -6076,7 +6859,7 @@ CREATE TABLE `mageav_attribute_option` (
   PRIMARY KEY (`option_id`),
   KEY `IDX_MAGEAV_ATTRIBUTE_OPTION_ATTRIBUTE_ID` (`attribute_id`),
   CONSTRAINT `FK_MAGEAV_ATTR_OPT_ATTR_ID_MAGEAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `mageav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Option';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Option';
 
 LOCK TABLES `mageav_attribute_option` WRITE;
 /*!40000 ALTER TABLE `mageav_attribute_option` DISABLE KEYS */;
@@ -6105,7 +6888,7 @@ CREATE TABLE `mageav_attribute_option_value` (
   KEY `IDX_MAGEAV_ATTRIBUTE_OPTION_VALUE_STORE_ID` (`store_id`),
   CONSTRAINT `FK_MAGEAV_ATTRIBUTE_OPTION_VALUE_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGEAV_ATTR_OPT_VAL_OPT_ID_MAGEAV_ATTR_OPT_OPT_ID` FOREIGN KEY (`option_id`) REFERENCES `mageav_attribute_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Option Value';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Option Value';
 
 LOCK TABLES `mageav_attribute_option_value` WRITE;
 /*!40000 ALTER TABLE `mageav_attribute_option_value` DISABLE KEYS */;
@@ -6133,7 +6916,7 @@ CREATE TABLE `mageav_attribute_set` (
   UNIQUE KEY `UNQ_MAGEAV_ATTRIBUTE_SET_ENTITY_TYPE_ID_ATTRIBUTE_SET_NAME` (`entity_type_id`,`attribute_set_name`),
   KEY `IDX_MAGEAV_ATTRIBUTE_SET_ENTITY_TYPE_ID_SORT_ORDER` (`entity_type_id`,`sort_order`),
   CONSTRAINT `FK_MAGEAV_ATTR_SET_ENTT_TYPE_ID_MAGEAV_ENTT_TYPE_ENTT_TYPE_ID` FOREIGN KEY (`entity_type_id`) REFERENCES `mageav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Set';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Set';
 
 LOCK TABLES `mageav_attribute_set` WRITE;
 /*!40000 ALTER TABLE `mageav_attribute_set` DISABLE KEYS */;
@@ -6196,7 +6979,7 @@ CREATE TABLE `mageav_entity_attribute` (
   KEY `IDX_MAGEAV_ENTITY_ATTRIBUTE_ATTRIBUTE_ID` (`attribute_id`),
   CONSTRAINT `FK_AA0B04CEB6D9C846D01ED87458F975EB` FOREIGN KEY (`attribute_group_id`) REFERENCES `mageav_attribute_group` (`attribute_group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGEAV_ENTT_ATTR_ATTR_ID_MAGEAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `mageav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8 COMMENT='Eav Entity Attributes';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Entity Attributes';
 
 LOCK TABLES `mageav_entity_attribute` WRITE;
 /*!40000 ALTER TABLE `mageav_entity_attribute` DISABLE KEYS */;
@@ -6487,7 +7270,7 @@ CREATE TABLE `mageav_entity_type` (
   `entity_attribute_collection` varchar(255) DEFAULT NULL COMMENT 'Entity Attribute Collection',
   PRIMARY KEY (`entity_type_id`),
   KEY `IDX_MAGEAV_ENTITY_TYPE_ENTITY_TYPE_CODE` (`entity_type_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='Eav Entity Type';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Entity Type';
 
 LOCK TABLES `mageav_entity_type` WRITE;
 /*!40000 ALTER TABLE `mageav_entity_type` DISABLE KEYS */;
@@ -6553,7 +7336,7 @@ CREATE TABLE `mageav_form_element` (
   CONSTRAINT `FK_MAGEAV_FORM_ELEMENT_TYPE_ID_MAGEAV_FORM_TYPE_TYPE_ID` FOREIGN KEY (`type_id`) REFERENCES `mageav_form_type` (`type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGEAV_FORM_ELM_ATTR_ID_MAGEAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `mageav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGEAV_FORM_ELM_FSET_ID_MAGEAV_FORM_FSET_FSET_ID` FOREIGN KEY (`fieldset_id`) REFERENCES `mageav_form_fieldset` (`fieldset_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COMMENT='Eav Form Element';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Form Element';
 
 LOCK TABLES `mageav_form_element` WRITE;
 /*!40000 ALTER TABLE `mageav_form_element` DISABLE KEYS */;
@@ -6631,7 +7414,7 @@ CREATE TABLE `mageav_form_fieldset` (
   UNIQUE KEY `UNQ_MAGEAV_FORM_FIELDSET_TYPE_ID_CODE` (`type_id`,`code`),
   KEY `IDX_MAGEAV_FORM_FIELDSET_TYPE_ID` (`type_id`),
   CONSTRAINT `FK_MAGEAV_FORM_FIELDSET_TYPE_ID_MAGEAV_FORM_TYPE_TYPE_ID` FOREIGN KEY (`type_id`) REFERENCES `mageav_form_type` (`type_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Eav Form Fieldset';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Form Fieldset';
 
 LOCK TABLES `mageav_form_fieldset` WRITE;
 /*!40000 ALTER TABLE `mageav_form_fieldset` DISABLE KEYS */;
@@ -6689,7 +7472,7 @@ CREATE TABLE `mageav_form_type` (
   UNIQUE KEY `UNQ_MAGEAV_FORM_TYPE_CODE_THEME_STORE_ID` (`code`,`theme`,`store_id`),
   KEY `IDX_MAGEAV_FORM_TYPE_STORE_ID` (`store_id`),
   CONSTRAINT `FK_MAGEAV_FORM_TYPE_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Eav Form Type';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Form Type';
 
 LOCK TABLES `mageav_form_type` WRITE;
 /*!40000 ALTER TABLE `mageav_form_type` DISABLE KEYS */;
@@ -6784,7 +7567,7 @@ CREATE TABLE `magindex_event` (
   `new_data` mediumtext COMMENT 'New Data',
   PRIMARY KEY (`event_id`),
   UNIQUE KEY `UNQ_MAGINDEX_EVENT_TYPE_ENTITY_ENTITY_PK` (`type`,`entity`,`entity_pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Index Event';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Index Event';
 
 LOCK TABLES `magindex_event` WRITE;
 /*!40000 ALTER TABLE `magindex_event` DISABLE KEYS */;
@@ -6792,7 +7575,35 @@ LOCK TABLES `magindex_event` WRITE;
 INSERT INTO `magindex_event` (`event_id`, `type`, `entity`, `entity_pk`, `created_at`, `old_data`, `new_data`)
 VALUES
 	(1,'save','catalog_category',1,'2015-05-20 13:59:31',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
-	(2,'save','catalog_category',2,'2015-05-20 13:59:31',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}');
+	(2,'save','catalog_category',2,'2015-05-20 13:59:31',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(3,'save','catalog_category',3,'2015-06-12 08:08:26',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(4,'save','catalog_category',4,'2015-06-12 08:10:50',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(5,'save','catalog_category',5,'2015-06-12 08:13:45',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(6,'save','catalog_category',6,'2015-06-12 08:15:54',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(7,'save','catalog_category',7,'2015-06-12 08:17:13',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(8,'save','catalog_category',8,'2015-06-12 08:18:56',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(9,'save','catalog_category',9,'2015-06-12 08:21:02',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(10,'save','catalog_category',10,'2015-06-12 08:22:22',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(11,'save','catalog_category',11,'2015-06-12 08:23:29',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(12,'save','catalog_category',12,'2015-06-12 08:24:33',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(13,'save','cataloginventory_stock_item',1,'2015-06-12 08:30:39',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(14,'catalog_reindex_price','catalog_product',1,'2015-06-12 08:30:39',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(15,'save','catalog_product',1,'2015-06-12 08:30:40',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(16,'save','cataloginventory_stock_item',2,'2015-06-12 09:37:33',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(17,'catalog_reindex_price','catalog_product',2,'2015-06-12 09:37:33',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(18,'save','catalog_product',2,'2015-06-12 09:37:34',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(19,'save','cataloginventory_stock_item',3,'2015-06-12 09:47:50',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(20,'catalog_reindex_price','catalog_product',3,'2015-06-12 09:47:50',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(21,'save','catalog_product',3,'2015-06-12 09:47:50',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(22,'save','cataloginventory_stock_item',4,'2015-06-12 09:52:57',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(23,'catalog_reindex_price','catalog_product',4,'2015-06-12 09:52:58',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(24,'save','catalog_product',4,'2015-06-12 09:52:58',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(25,'save','cataloginventory_stock_item',5,'2015-06-12 10:00:36',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(26,'catalog_reindex_price','catalog_product',5,'2015-06-12 10:00:36',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(27,'save','catalog_product',5,'2015-06-12 10:00:36',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),
+	(28,'save','cataloginventory_stock_item',6,'2015-06-12 10:07:00',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(29,'catalog_reindex_price','catalog_product',6,'2015-06-12 10:07:00',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),
+	(30,'save','catalog_product',6,'2015-06-12 10:07:00',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}');
 
 /*!40000 ALTER TABLE `magindex_event` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -6812,22 +7623,22 @@ CREATE TABLE `magindex_process` (
   `mode` varchar(9) NOT NULL DEFAULT 'real_time' COMMENT 'Mode',
   PRIMARY KEY (`process_id`),
   UNIQUE KEY `UNQ_MAGINDEX_PROCESS_INDEXER_CODE` (`indexer_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='Index Process';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Index Process';
 
 LOCK TABLES `magindex_process` WRITE;
 /*!40000 ALTER TABLE `magindex_process` DISABLE KEYS */;
 
 INSERT INTO `magindex_process` (`process_id`, `indexer_code`, `status`, `started_at`, `ended_at`, `mode`)
 VALUES
-	(1,'catalog_product_attribute','pending','2015-05-26 08:41:06','2015-05-26 08:41:06','real_time'),
-	(2,'catalog_product_price','pending','2015-05-26 08:41:06','2015-05-26 08:41:06','real_time'),
-	(3,'catalog_url','pending','2015-05-26 08:41:06','2015-05-26 08:41:07','real_time'),
+	(1,'catalog_product_attribute','pending','2015-06-12 10:08:20','2015-06-12 10:08:20','real_time'),
+	(2,'catalog_product_price','pending','2015-06-12 10:08:20','2015-06-12 10:08:20','real_time'),
+	(3,'catalog_url','pending','2015-06-12 10:50:22','2015-06-12 10:50:22','real_time'),
 	(4,'catalog_product_flat','pending','2015-05-26 08:41:07','2015-05-26 08:41:07','real_time'),
 	(5,'catalog_category_flat','pending','2015-05-26 08:41:07','2015-05-26 08:41:07','real_time'),
-	(6,'catalog_category_product','pending','2015-05-26 08:41:07','2015-05-26 08:41:07','real_time'),
-	(7,'catalogsearch_fulltext','pending','2015-05-26 08:41:07','2015-05-26 08:41:07','real_time'),
-	(8,'cataloginventory_stock','pending','2015-05-26 08:41:06','2015-05-26 08:41:06','real_time'),
-	(9,'tag_summary','pending','2015-05-26 08:41:07','2015-05-26 08:41:07','real_time');
+	(6,'catalog_category_product','pending','2015-06-12 10:50:22','2015-06-12 10:50:22','real_time'),
+	(7,'catalogsearch_fulltext','pending','2015-06-12 10:50:22','2015-06-12 10:50:22','real_time'),
+	(8,'cataloginventory_stock','pending','2015-06-12 10:08:20','2015-06-12 10:08:20','real_time'),
+	(9,'tag_summary','pending','2015-06-12 10:08:20','2015-06-12 10:08:20','real_time');
 
 /*!40000 ALTER TABLE `magindex_process` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -6911,7 +7722,7 @@ CREATE TABLE `maglog_summary_type` (
   `period` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'Period',
   `period_type` varchar(6) NOT NULL DEFAULT 'MINUTE' COMMENT 'Period Type',
   PRIMARY KEY (`type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Log Summary Types Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Log Summary Types Table';
 
 LOCK TABLES `maglog_summary_type` WRITE;
 /*!40000 ALTER TABLE `maglog_summary_type` DISABLE KEYS */;
@@ -7368,7 +8179,127 @@ VALUES
 	(423,28,'2015-06-10 11:47:23'),
 	(424,29,'2015-06-10 11:47:37'),
 	(425,30,'2015-06-10 11:47:39'),
-	(426,31,'2015-06-10 11:47:39');
+	(426,31,'2015-06-10 11:47:39'),
+	(427,32,'2015-06-11 10:01:35'),
+	(428,32,'2015-06-11 10:01:37'),
+	(429,32,'2015-06-11 10:01:38'),
+	(430,32,'2015-06-11 10:08:20'),
+	(431,32,'2015-06-11 10:08:21'),
+	(432,32,'2015-06-11 10:08:23'),
+	(433,33,'2015-06-11 10:53:03'),
+	(434,33,'2015-06-11 10:53:04'),
+	(435,33,'2015-06-11 10:53:06'),
+	(436,33,'2015-06-11 11:02:17'),
+	(437,33,'2015-06-11 11:02:18'),
+	(438,33,'2015-06-11 11:02:20'),
+	(439,33,'2015-06-11 11:06:43'),
+	(440,33,'2015-06-11 11:06:45'),
+	(441,33,'2015-06-11 11:06:46'),
+	(442,33,'2015-06-11 11:11:18'),
+	(443,33,'2015-06-11 11:11:20'),
+	(444,33,'2015-06-11 11:11:21'),
+	(445,33,'2015-06-11 11:16:29'),
+	(446,33,'2015-06-11 11:16:30'),
+	(447,33,'2015-06-11 11:16:32'),
+	(448,34,'2015-06-11 14:04:03'),
+	(449,34,'2015-06-11 14:04:04'),
+	(450,34,'2015-06-11 14:04:06'),
+	(451,34,'2015-06-11 14:06:16'),
+	(452,34,'2015-06-11 14:06:18'),
+	(453,34,'2015-06-11 14:06:19'),
+	(454,34,'2015-06-11 14:07:38'),
+	(455,34,'2015-06-11 14:07:39'),
+	(456,34,'2015-06-11 14:07:41'),
+	(457,34,'2015-06-11 14:46:07'),
+	(458,34,'2015-06-11 14:46:09'),
+	(459,34,'2015-06-11 14:46:11'),
+	(460,34,'2015-06-11 14:47:23'),
+	(461,34,'2015-06-11 14:47:24'),
+	(462,34,'2015-06-11 14:47:26'),
+	(463,34,'2015-06-11 14:48:53'),
+	(464,34,'2015-06-11 14:48:55'),
+	(465,34,'2015-06-11 14:48:57'),
+	(466,34,'2015-06-11 14:50:06'),
+	(467,34,'2015-06-11 14:50:08'),
+	(468,34,'2015-06-11 14:50:09'),
+	(469,34,'2015-06-11 14:50:26'),
+	(470,34,'2015-06-11 14:50:27'),
+	(471,34,'2015-06-11 14:50:29'),
+	(472,34,'2015-06-11 14:51:42'),
+	(473,34,'2015-06-11 14:51:44'),
+	(474,34,'2015-06-11 14:51:45'),
+	(475,34,'2015-06-11 15:06:49'),
+	(476,34,'2015-06-11 15:06:55'),
+	(477,35,'2015-06-12 08:03:19'),
+	(478,35,'2015-06-12 08:03:21'),
+	(479,35,'2015-06-12 08:08:34'),
+	(480,35,'2015-06-12 08:08:35'),
+	(481,35,'2015-06-12 08:19:08'),
+	(482,35,'2015-06-12 08:19:10'),
+	(483,35,'2015-06-12 08:19:15'),
+	(484,35,'2015-06-12 08:19:16'),
+	(485,35,'2015-06-12 08:34:26'),
+	(486,35,'2015-06-12 08:34:27'),
+	(487,35,'2015-06-12 08:35:37'),
+	(488,35,'2015-06-12 08:35:40'),
+	(489,35,'2015-06-12 08:36:54'),
+	(490,35,'2015-06-12 08:36:55'),
+	(491,35,'2015-06-12 08:36:57'),
+	(492,35,'2015-06-12 08:37:07'),
+	(493,35,'2015-06-12 08:37:09'),
+	(494,35,'2015-06-12 08:37:21'),
+	(495,35,'2015-06-12 08:37:22'),
+	(496,35,'2015-06-12 08:37:43'),
+	(497,35,'2015-06-12 08:37:45'),
+	(498,35,'2015-06-12 08:45:21'),
+	(499,35,'2015-06-12 08:45:22'),
+	(500,35,'2015-06-12 08:45:31'),
+	(501,35,'2015-06-12 08:45:32'),
+	(502,35,'2015-06-12 08:45:34'),
+	(503,35,'2015-06-12 08:48:59'),
+	(504,35,'2015-06-12 08:49:00'),
+	(505,35,'2015-06-12 08:49:02'),
+	(506,35,'2015-06-12 08:49:19'),
+	(507,35,'2015-06-12 08:49:20'),
+	(508,35,'2015-06-12 08:49:29'),
+	(509,35,'2015-06-12 08:49:30'),
+	(510,35,'2015-06-12 08:49:32'),
+	(511,35,'2015-06-12 08:49:36'),
+	(512,35,'2015-06-12 08:49:38'),
+	(513,35,'2015-06-12 09:28:24'),
+	(514,35,'2015-06-12 09:28:25'),
+	(515,35,'2015-06-12 09:29:33'),
+	(516,35,'2015-06-12 09:29:35'),
+	(517,35,'2015-06-12 09:30:27'),
+	(518,35,'2015-06-12 09:30:28'),
+	(519,35,'2015-06-12 09:32:03'),
+	(520,35,'2015-06-12 09:32:05'),
+	(521,35,'2015-06-12 09:38:32'),
+	(522,35,'2015-06-12 09:38:33'),
+	(523,35,'2015-06-12 09:38:41'),
+	(524,35,'2015-06-12 09:38:43'),
+	(525,35,'2015-06-12 09:40:04'),
+	(526,35,'2015-06-12 09:40:06'),
+	(527,35,'2015-06-12 09:49:26'),
+	(528,35,'2015-06-12 09:49:28'),
+	(529,35,'2015-06-12 09:55:17'),
+	(530,35,'2015-06-12 09:55:18'),
+	(531,35,'2015-06-12 10:02:07'),
+	(532,35,'2015-06-12 10:02:09'),
+	(533,35,'2015-06-12 10:08:34'),
+	(534,35,'2015-06-12 10:08:36'),
+	(535,35,'2015-06-12 10:23:27'),
+	(536,35,'2015-06-12 10:23:29'),
+	(537,35,'2015-06-12 10:23:30'),
+	(538,35,'2015-06-12 10:24:16'),
+	(539,35,'2015-06-12 10:24:18'),
+	(540,35,'2015-06-12 10:24:19'),
+	(541,35,'2015-06-12 10:28:52'),
+	(542,35,'2015-06-12 10:28:54'),
+	(543,35,'2015-06-12 10:28:55'),
+	(544,36,'2015-06-12 12:21:13'),
+	(545,36,'2015-06-12 12:21:15'),
+	(546,36,'2015-06-12 12:21:17');
 
 /*!40000 ALTER TABLE `maglog_url` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -7384,7 +8315,7 @@ CREATE TABLE `maglog_url_info` (
   `url` varchar(255) DEFAULT NULL COMMENT 'URL',
   `referer` varchar(255) DEFAULT NULL COMMENT 'Referrer',
   PRIMARY KEY (`url_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=427 DEFAULT CHARSET=utf8 COMMENT='Log URL Info Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Log URL Info Table';
 
 LOCK TABLES `maglog_url_info` WRITE;
 /*!40000 ALTER TABLE `maglog_url_info` DISABLE KEYS */;
@@ -7816,7 +8747,127 @@ VALUES
 	(423,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
 	(424,'http://magento.del/',NULL),
 	(425,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
-	(426,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/');
+	(426,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(427,'http://magento.del/',NULL),
+	(428,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(429,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(430,'http://magento.del/',NULL),
+	(431,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(432,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(433,'http://magento.del/',NULL),
+	(434,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(435,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(436,'http://magento.del/',NULL),
+	(437,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(438,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(439,'http://magento.del/',NULL),
+	(440,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(441,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(442,'http://magento.del/',NULL),
+	(443,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(444,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(445,'http://magento.del/',NULL),
+	(446,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(447,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(448,'http://magento.del/',NULL),
+	(449,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(450,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(451,'http://magento.del/',NULL),
+	(452,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(453,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(454,'http://magento.del/',NULL),
+	(455,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(456,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(457,'http://magento.del/',NULL),
+	(458,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(459,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(460,'http://magento.del/',NULL),
+	(461,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(462,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(463,'http://magento.del/',NULL),
+	(464,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(465,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(466,'http://magento.del/',NULL),
+	(467,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(468,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(469,'http://magento.del/',NULL),
+	(470,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(471,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(472,'http://magento.del/',NULL),
+	(473,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(474,'http://magento.del/skin/frontend/base/default/images/media/col_left_callout.jpg','http://magento.del/'),
+	(475,'http://magento.del/skin/frontend/bookstore/default/images/slide2.png','http://magento.del/'),
+	(476,'http://magento.del/skin/frontend/bookstore/default/images/slide2.png',NULL),
+	(477,'http://magento.del/',NULL),
+	(478,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(479,'http://magento.del/',NULL),
+	(480,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(481,'http://magento.del/',NULL),
+	(482,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(483,'http://magento.del/catalog/category/view/id/5','http://magento.del/'),
+	(484,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/video-games.html'),
+	(485,'http://magento.del/catalog/category/view/id/3','http://magento.del/video-games.html'),
+	(486,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books.html'),
+	(487,'http://magento.del/catalog/category/view/id/3','http://magento.del/video-games.html'),
+	(488,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books.html'),
+	(489,'http://magento.del/catalog/category/view/id/3','http://magento.del/video-games.html'),
+	(490,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books.html'),
+	(491,'http://magento.del/skin/frontend/base/default/images/i_asc_arrow.gif','http://magento.del/books.html'),
+	(492,'http://magento.del/catalog/product/view/id/1/category/3','http://magento.del/books.html'),
+	(493,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books/a-song-of-ice-and-fire.html'),
+	(494,'http://magento.del/catalog/product/gallery/id/1/image/1/','http://magento.del/books/a-song-of-ice-and-fire.html'),
+	(495,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/catalog/product/gallery/id/1/image/1/'),
+	(496,'http://magento.del/','http://magento.del/books/a-song-of-ice-and-fire.html'),
+	(497,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(498,'http://magento.del/','http://magento.del/'),
+	(499,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(500,'http://magento.del/catalog/category/view/id/3','http://magento.del/'),
+	(501,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books.html'),
+	(502,'http://magento.del/skin/frontend/base/default/images/i_asc_arrow.gif','http://magento.del/books.html'),
+	(503,'http://magento.del/catalog/category/view/id/3','http://magento.del/'),
+	(504,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books.html'),
+	(505,'http://magento.del/skin/frontend/base/default/images/i_asc_arrow.gif','http://magento.del/books.html'),
+	(506,'http://magento.del/','http://magento.del/books.html'),
+	(507,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(508,'http://magento.del/catalog/category/view/id/9','http://magento.del/'),
+	(509,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books/fiction.html'),
+	(510,'http://magento.del/skin/frontend/base/default/images/i_asc_arrow.gif','http://magento.del/books/fiction.html'),
+	(511,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(512,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(513,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(514,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(515,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(516,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(517,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(518,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(519,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(520,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(521,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(522,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(523,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(524,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(525,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(526,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(527,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(528,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(529,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(530,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(531,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(532,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(533,'http://magento.del/','http://magento.del/books/fiction.html'),
+	(534,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/'),
+	(535,'http://magento.del/catalog/category/view/id/9','http://magento.del/'),
+	(536,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books/fiction.html'),
+	(537,'http://magento.del/skin/frontend/base/default/images/i_asc_arrow.gif','http://magento.del/books/fiction.html'),
+	(538,'http://magento.del/catalog/category/view/id/9','http://magento.del/'),
+	(539,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books/fiction.html'),
+	(540,'http://magento.del/skin/frontend/base/default/images/i_asc_arrow.gif','http://magento.del/books/fiction.html'),
+	(541,'http://magento.del/catalog/category/view/id/9','http://magento.del/'),
+	(542,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books/fiction.html'),
+	(543,'http://magento.del/skin/frontend/base/default/images/i_asc_arrow.gif','http://magento.del/books/fiction.html'),
+	(544,'http://magento.del/catalog/category/view/id/9','http://magento.del/'),
+	(545,'http://magento.del/skin/frontend/base/default/css/megamenu.css','http://magento.del/books/fiction.html'),
+	(546,'http://magento.del/skin/frontend/base/default/images/i_asc_arrow.gif','http://magento.del/books/fiction.html');
 
 /*!40000 ALTER TABLE `maglog_url_info` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -7835,7 +8886,7 @@ CREATE TABLE `maglog_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'Last URL ID',
   `store_id` smallint(5) unsigned NOT NULL COMMENT 'Store ID',
   PRIMARY KEY (`visitor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='Log Visitors Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Log Visitors Table';
 
 LOCK TABLES `maglog_visitor` WRITE;
 /*!40000 ALTER TABLE `maglog_visitor` DISABLE KEYS */;
@@ -7872,7 +8923,12 @@ VALUES
 	(28,'4mr70u5up5t9knusvb66duo0l7','2015-06-10 10:37:22','2015-06-10 11:47:23',423,1),
 	(29,'v59587b6sv790k3c7dc96s7q67','2015-06-10 11:47:36','2015-06-10 11:47:37',424,1),
 	(30,'et6fbl17pa9erprtobtkrjqs41','2015-06-10 11:47:38','2015-06-10 11:47:39',425,1),
-	(31,'c83h4g5vl9qfj9usp0vltf3sh5','2015-06-10 11:47:38','2015-06-10 11:47:39',426,1);
+	(31,'c83h4g5vl9qfj9usp0vltf3sh5','2015-06-10 11:47:38','2015-06-10 11:47:39',426,1),
+	(32,'siop08q7amc8d91eon11ri7k70','2015-06-11 10:01:34','2015-06-11 10:08:23',432,1),
+	(33,'siop08q7amc8d91eon11ri7k70','2015-06-11 10:53:02','2015-06-11 11:16:32',447,1),
+	(34,'6ckcbjfsagn085ju5eqobinjp0','2015-06-11 14:04:02','2015-06-11 15:06:55',476,1),
+	(35,'507odat1d14r50co6l8tbrilk4','2015-06-12 08:03:18','2015-06-12 10:28:55',543,1),
+	(36,'4fhht9270kob8afengtb7smra3','2015-06-12 12:21:12','2015-06-12 12:21:17',546,1);
 
 /*!40000 ALTER TABLE `maglog_visitor` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -7929,7 +8985,12 @@ VALUES
 	(28,NULL,'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0 FirePHP/0.7.4',NULL,'en-GB,en;q=0.5',3232249957,3232249857),
 	(29,NULL,'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0',NULL,'en-GB,en;q=0.5',3232249957,3232249857),
 	(30,'http://magento.del/','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0',NULL,'en-GB,en;q=0.5',3232249957,3232249857),
-	(31,'http://magento.del/','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0',NULL,'en-GB,en;q=0.5',3232249957,3232249857);
+	(31,'http://magento.del/','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0',NULL,'en-GB,en;q=0.5',3232249957,3232249857),
+	(32,NULL,'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0 FirePHP/0.7.4',NULL,'en-GB,en;q=0.5',3232249957,3232249857),
+	(33,NULL,'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0',NULL,'en-GB,en;q=0.5',3232249957,3232249857),
+	(34,NULL,'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0',NULL,'en-GB,en;q=0.5',3232249957,3232249857),
+	(35,NULL,'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0',NULL,'en-GB,en;q=0.5',3232249957,3232249857),
+	(36,'http://magento.del/','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0',NULL,'en-GB,en;q=0.5',3232249957,3232249857);
 
 /*!40000 ALTER TABLE `maglog_visitor_info` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -8079,7 +9140,7 @@ CREATE TABLE `magnewsletter_template` (
   KEY `IDX_MAGNEWSLETTER_TEMPLATE_TEMPLATE_ACTUAL` (`template_actual`),
   KEY `IDX_MAGNEWSLETTER_TEMPLATE_ADDED_AT` (`added_at`),
   KEY `IDX_MAGNEWSLETTER_TEMPLATE_MODIFIED_AT` (`modified_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Newsletter Template';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter Template';
 
 LOCK TABLES `magnewsletter_template` WRITE;
 /*!40000 ALTER TABLE `magnewsletter_template` DISABLE KEYS */;
@@ -8281,7 +9342,7 @@ CREATE TABLE `magpoll` (
   PRIMARY KEY (`poll_id`),
   KEY `IDX_MAGPOLL_STORE_ID` (`store_id`),
   CONSTRAINT `FK_MAGPOLL_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Poll';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Poll';
 
 LOCK TABLES `magpoll` WRITE;
 /*!40000 ALTER TABLE `magpoll` DISABLE KEYS */;
@@ -8308,7 +9369,7 @@ CREATE TABLE `magpoll_answer` (
   PRIMARY KEY (`answer_id`),
   KEY `IDX_MAGPOLL_ANSWER_POLL_ID` (`poll_id`),
   CONSTRAINT `FK_MAGPOLL_ANSWER_POLL_ID_MAGPOLL_POLL_ID` FOREIGN KEY (`poll_id`) REFERENCES `magpoll` (`poll_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Poll Answers';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Poll Answers';
 
 LOCK TABLES `magpoll_answer` WRITE;
 /*!40000 ALTER TABLE `magpoll_answer` DISABLE KEYS */;
@@ -8433,7 +9494,7 @@ CREATE TABLE `magrating` (
   UNIQUE KEY `UNQ_MAGRATING_RATING_CODE` (`rating_code`),
   KEY `IDX_MAGRATING_ENTITY_ID` (`entity_id`),
   CONSTRAINT `FK_MAGRATING_ENTITY_ID_MAGRATING_ENTITY_ENTITY_ID` FOREIGN KEY (`entity_id`) REFERENCES `magrating_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Ratings';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Ratings';
 
 LOCK TABLES `magrating` WRITE;
 /*!40000 ALTER TABLE `magrating` DISABLE KEYS */;
@@ -8458,7 +9519,7 @@ CREATE TABLE `magrating_entity` (
   `entity_code` varchar(64) NOT NULL COMMENT 'Entity Code',
   PRIMARY KEY (`entity_id`),
   UNIQUE KEY `UNQ_MAGRATING_ENTITY_ENTITY_CODE` (`entity_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Rating entities';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Rating entities';
 
 LOCK TABLES `magrating_entity` WRITE;
 /*!40000 ALTER TABLE `magrating_entity` DISABLE KEYS */;
@@ -8487,7 +9548,7 @@ CREATE TABLE `magrating_option` (
   PRIMARY KEY (`option_id`),
   KEY `IDX_MAGRATING_OPTION_RATING_ID` (`rating_id`),
   CONSTRAINT `FK_MAGRATING_OPTION_RATING_ID_MAGRATING_RATING_ID` FOREIGN KEY (`rating_id`) REFERENCES `magrating` (`rating_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='Rating options';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Rating options';
 
 LOCK TABLES `magrating_option` WRITE;
 /*!40000 ALTER TABLE `magrating_option` DISABLE KEYS */;
@@ -8643,6 +9704,15 @@ CREATE TABLE `magreport_event` (
   CONSTRAINT `FK_MAGREPORT_EVENT_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Reports Event Table';
 
+LOCK TABLES `magreport_event` WRITE;
+/*!40000 ALTER TABLE `magreport_event` DISABLE KEYS */;
+
+INSERT INTO `magreport_event` (`event_id`, `logged_at`, `event_type_id`, `object_id`, `subject_id`, `subtype`, `store_id`)
+VALUES
+	(1,'2015-06-12 08:37:06',1,1,35,1,1);
+
+/*!40000 ALTER TABLE `magreport_event` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magreport_event_types
@@ -8655,7 +9725,7 @@ CREATE TABLE `magreport_event_types` (
   `event_name` varchar(64) NOT NULL COMMENT 'Event Name',
   `customer_login` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'Customer Login',
   PRIMARY KEY (`event_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Reports Event Type Table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Reports Event Type Table';
 
 LOCK TABLES `magreport_event_types` WRITE;
 /*!40000 ALTER TABLE `magreport_event_types` DISABLE KEYS */;
@@ -8768,6 +9838,15 @@ CREATE TABLE `magreport_viewed_product_index` (
   CONSTRAINT `FK_MAGREPORT_VIEWED_PRD_IDX_STORE_ID_MAGCORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `magcore_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Reports Viewed Product Index Table';
 
+LOCK TABLES `magreport_viewed_product_index` WRITE;
+/*!40000 ALTER TABLE `magreport_viewed_product_index` DISABLE KEYS */;
+
+INSERT INTO `magreport_viewed_product_index` (`index_id`, `visitor_id`, `customer_id`, `product_id`, `store_id`, `added_at`)
+VALUES
+	(1,35,NULL,1,1,'2015-06-12 08:37:06');
+
+/*!40000 ALTER TABLE `magreport_viewed_product_index` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table magreview
@@ -8824,7 +9903,7 @@ CREATE TABLE `magreview_entity` (
   `entity_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Review entity id',
   `entity_code` varchar(32) NOT NULL COMMENT 'Review entity code',
   PRIMARY KEY (`entity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Review entities';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Review entities';
 
 LOCK TABLES `magreview_entity` WRITE;
 /*!40000 ALTER TABLE `magreview_entity` DISABLE KEYS */;
@@ -8867,7 +9946,7 @@ CREATE TABLE `magreview_status` (
   `status_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Status id',
   `status_code` varchar(32) NOT NULL COMMENT 'Status code',
   PRIMARY KEY (`status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Review statuses';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Review statuses';
 
 LOCK TABLES `magreview_status` WRITE;
 /*!40000 ALTER TABLE `magreview_status` DISABLE KEYS */;
@@ -11026,7 +12105,7 @@ CREATE TABLE `magtax_calculation` (
   CONSTRAINT `FK_F1DD1210D2B4E6E2988FE99A8DF58A75` FOREIGN KEY (`tax_calculation_rate_id`) REFERENCES `magtax_calculation_rate` (`tax_calculation_rate_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGTAX_CALCULATION_PRODUCT_TAX_CLASS_ID_MAGTAX_CLASS_CLASS_ID` FOREIGN KEY (`product_tax_class_id`) REFERENCES `magtax_class` (`class_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_MAGTAX_CALC_CSTR_TAX_CLASS_ID_MAGTAX_CLASS_CLASS_ID` FOREIGN KEY (`customer_tax_class_id`) REFERENCES `magtax_class` (`class_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Tax Calculation';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tax Calculation';
 
 LOCK TABLES `magtax_calculation` WRITE;
 /*!40000 ALTER TABLE `magtax_calculation` DISABLE KEYS */;
@@ -11059,7 +12138,7 @@ CREATE TABLE `magtax_calculation_rate` (
   KEY `IDX_MAGTAX_CALC_RATE_TAX_COUNTRY_ID_TAX_REGION_ID_TAX_POSTCODE` (`tax_country_id`,`tax_region_id`,`tax_postcode`),
   KEY `IDX_MAGTAX_CALCULATION_RATE_CODE` (`code`),
   KEY `DDCB4B6E9B4B506BF6BD45E9DC312D23` (`tax_calculation_rate_id`,`tax_country_id`,`tax_region_id`,`zip_is_range`,`tax_postcode`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Tax Calculation Rate';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tax Calculation Rate';
 
 LOCK TABLES `magtax_calculation_rate` WRITE;
 /*!40000 ALTER TABLE `magtax_calculation_rate` DISABLE KEYS */;
@@ -11107,7 +12186,7 @@ CREATE TABLE `magtax_calculation_rule` (
   PRIMARY KEY (`tax_calculation_rule_id`),
   KEY `IDX_MAGTAX_CALC_RULE_PRIORITY_POSITION_TAX_CALC_RULE_ID` (`priority`,`position`,`tax_calculation_rule_id`),
   KEY `IDX_MAGTAX_CALCULATION_RULE_CODE` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Tax Calculation Rule';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tax Calculation Rule';
 
 LOCK TABLES `magtax_calculation_rule` WRITE;
 /*!40000 ALTER TABLE `magtax_calculation_rule` DISABLE KEYS */;
@@ -11130,7 +12209,7 @@ CREATE TABLE `magtax_class` (
   `class_name` varchar(255) NOT NULL COMMENT 'Class Name',
   `class_type` varchar(8) NOT NULL DEFAULT 'CUSTOMER' COMMENT 'Class Type',
   PRIMARY KEY (`class_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Tax Class';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tax Class';
 
 LOCK TABLES `magtax_class` WRITE;
 /*!40000 ALTER TABLE `magtax_class` DISABLE KEYS */;
