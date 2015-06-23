@@ -1,0 +1,14 @@
+{
+    "name": "delboy1978uk/magento-theme-book",
+    "description": "Files for the book I'm working through",
+    "require": {
+        "delboy1978uk/icon": "^1.0",
+        "delboy1978uk/css": "^1.0"
+    },
+    "authors": [
+        {
+            "name": "Derek McLean",
+            "email": "delboy1978uk@gmail.com"
+        }
+    ]
+}

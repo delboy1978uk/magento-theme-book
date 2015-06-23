@@ -1,5 +1,7 @@
 <?php
 
+use Del\Icon;
+
 if ($this->getIsNeedToDisplaySideBar())
 {
 ?>
@@ -7,7 +9,7 @@ if ($this->getIsNeedToDisplaySideBar())
     <?php $cart_qty = $this->getSummaryCount(); ?>
     <div class="block-title">
         <div class="block-title">
-            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <?= Icon::SHOPPING_CART; ?>
             <strong><span><?= $this->__('My Cart') ?></span></strong>
 
             <?php
@@ -25,7 +27,7 @@ if ($this->getIsNeedToDisplaySideBar())
             <?php if ($cart_qty && $this->isPossibleOnepageCheckout()) { ?>
                 <div class="actions">
                     <?= $this->getChildHtml('extra_actions'); ?>
-                    <button type="button" title="<?= $this->__('Checkout'); ?>" class="button"
+                    <button type="button" title="<?= $this->__('Checkout'); ?>" class="button btn btn-sm btn-primary pull-right"
                             onclick="setLocation('<?= $this->getCheckoutUrl() ?>')">
                         <span><span><?= $this->__('Checkout') ?></span></span>
                     </button>
@@ -35,9 +37,9 @@ if ($this->getIsNeedToDisplaySideBar())
             <?php $items = $this->getRecentItems(); ?>
             <?php if (count($items)) { ?>
                 <p class="block-subtitle"><?= $this->__('Recently added item(s)'); ?></p>
-                <ol id="cart-sidebar" class="mini-products-list">
-                    <?php foreach ($_items as $_item) { ?>
-                        <?= $this->getItemHtml($_item) ?>
+                <ol id="cart-sidebar" class="mini-products-list nospots m0 p0">
+                    <?php foreach ($items as $item) { ?>
+                        <?= $this->getItemHtml($item) ?>
                     <?php } ?>
                 </ol>
                 <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
